@@ -6,85 +6,148 @@
 /*   By: hel-magh <hel-magh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 15:37:58 by hel-magh          #+#    #+#             */
-/*   Updated: 2024/01/04 16:12:10 by hel-magh         ###   ########.fr       */
+/*   Updated: 2024/01/08 16:22:31 by hel-magh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-char	*check_map(int fd, char *buffer)
+int map_last(char *str,size_t len)
 {
-	int		i;
-	ssize_t	res;
-	char	*tmp;
-	char	*map_line;
-
-	i = 0;
-	res = 1;
-	while (res > 0)
-	{
-		res = read(fd, buffer, BUFFER_MAP);
-		if (res == -1)
-			return (NULL);
-		else if (res == 0)
-			break ;
-		buffer[res] = '\0';
-		tmp = map_line;
-		map_line = ft_strjoin(tmp, buffer);
-		free(tmp);
-		tmp = NULL;
-		if (!map_line || ft_strchr(map_line, '\n'))
-			break ;
-	}
-	return (map_line);
-}
-int ft_chek_walls(int fd)
-{
-	ssize_t	res;
-	int		i;
-	int		j;
-	int		l;
-	char	*line;
+	t_map_check wall;
 	
-	res = 0;
-	i = 0;
-	line = get_next_line(fd);
-	j = ft_strlen(line) + 1;
-	l = j;
-	while ((!*line) && (j = l))
+	wall.counter= 0;
+	while(str[wall.counter])
+		wall.counter++;
+	size_t i =0;
+	i = wall.counter - len;
+	i++;
+	while(str[i])
 	{
-		res++;
-		line = get_next_line(fd);
-		l = ft_strlen(line) + 1;
+		if(str[i] != '1')
+		{
+			printf("last line invalid\n");
+			return (0);
+		}
+		i++;
 	}
-	if(ft_strtrim(line, "1") != "\0" || ft_strtrim(line, "1") != "\0" || j!= l )
-		return(free(line), line == NULL, 0);
-	while(res > 0)
+	// printf("i : %zu\n", i);
+	// printf("last : %zu \n",wall.counter);
+	// printf("len : %zu \n",len);
+	return(1);
+}
+int map_first(char *str, size_t counter, size_t len)
+{
+	t_map_check wall;
+	
+	wall.counter= 0;
+	while(str[wall.counter] != '\n' && str[wall.counter] != '\0')
 	{
-		if(line[res - 1] == '1' && line[res - 1 + j ] == '1')
-			res--;
-		else
-			return(free(line), line == NULL, 0);
+		if(str[wall.counter] != '1')
+		{
+			printf("Fist line invalid\n");
+			return (0);
+		}
+		wall.counter++;
+		
+	}
+	wall.len =(len * counter) - 1;
+	if (map_last(str, len - 1) == 1)
+		return (1);
+	return(0);
+}
+
+int map_wall_checker(char *str, size_t counter, size_t len)
+{
+	t_map_check	wall;
+	
+	wall.counter = 0;
+	wall.counter2 = 0;
+	wall.len = 0;
+	if(map_first(str, counter, len))
+	{
+		while(counter > 0)
+		{
+
+			wall.len++;
+			if(str[wall.counter] == '\n' || str[wall.counter] == '\0')
+			{
+				if(str[wall.counter2] == '1' && str[wall.counter - 1] == '1'
+				 && len  == wall.len)
+				{
+					wall.counter2 = wall.counter + 1;
+					counter--;
+					wall.len = 0;
+				}
+				else
+				{
+					printf("not a valid wall\n");
+					return(0);
+				}
+			}
+			wall.counter++;
+		}
 	}
 	return(1);
 }
 
-int ft_map(void)
+int new_line_checker(char *str)
 {
-	char	*buffer;
-	char	*map_line;
-	int		fd;
+	t_map_check new;
 
-	fd = open("maps/maps1.ber", O_RDONLY);
-	buffer = malloc(((size_t)BUFFER_MAP + 1) * sizeof(char));
-	if (!buffer)
-		return (free(buffer), buffer = NULL, NULL);
-	map_line = check_map(fd, buffer);
-	if(!map_line)
-		return(free(buffer), buffer = NULL, NULL);
-	free(buffer);
-	buffer = NULL;
-	if (ft_strtrim(map_line, "01CEP") != "\0" || ft_chek_walls(fd) != 1)
-		return (free(map_line), map_line = NULL, 0);
+	new.counter = 0;
+	while(str[new.counter])
+	{
+		if(str[new.counter] == '\n' && str[new.counter + 1] == '\n')
+		{
+			printf("there is a new line\n");
+				return (0);
+		}
+		new.counter++;
+	}
 	return(1);
+}
+int map_checker(void)
+{
+	t_map_check map;
+	
+	map.len = 0;
+	map.counter = 0;
+	map.fd = open("maps/map1.ber", O_RDONLY);
+	map.buffer = ft_strdup(""); 
+	map.map_line = ft_strdup(""); 
+	while(1)
+	{
+		map.buffer = get_next_line(map.fd);
+		if(map.buffer == NULL)
+			break;
+		if(map.counter == 0)
+			map.len = ft_strlen(map.buffer);
+		map.counter++;
+		map.tmp = map.map_line;
+		map.map_line = ft_strjoin(map.tmp, map.buffer);
+		free(map.tmp);
+		map.tmp = NULL;
+		free(map.buffer);
+		map.buffer= NULL;
+	}
+	if(new_line_checker(map.map_line) && map_wall_checker(map.map_line, map.counter, map.len))
+	{
+		map.trim_line = ft_strtrim(map.map_line, "\n01EPC");
+		if (map.trim_line[0] == '\0')
+			return (1);
+	}
+	return(0);
+}
+
+
+int main() {
+    int result = map_checker();
+    if (result == 1) {
+        ft_printf("Valid map\n");
+    } else {
+        ft_printf("Not a valid map\n");
+    }
+	
+    return 0;
 }
