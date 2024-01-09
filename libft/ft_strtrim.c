@@ -6,7 +6,7 @@
 /*   By: hel-magh <hel-magh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 14:52:31 by hel-magh          #+#    #+#             */
-/*   Updated: 2024/01/04 15:27:42 by hel-magh         ###   ########.fr       */
+/*   Updated: 2024/01/09 15:14:35 by hel-magh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,4 +43,3 @@ char	*ft_strtrim(char const *s1, char const *set)
 		j--;
 	return (ft_substr(s1, i, j - (i - 1)));
 }
-

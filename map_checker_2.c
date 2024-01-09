@@ -6,7 +6,7 @@
 /*   By: hel-magh <hel-magh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 14:54:44 by hel-magh          #+#    #+#             */
-/*   Updated: 2024/01/09 15:11:30 by hel-magh         ###   ########.fr       */
+/*   Updated: 2024/01/09 15:12:01 by hel-magh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,5 +103,3 @@ int	map_wall_checker(char *str, size_t counter, size_t len)
 	}
 	return (1);
 }
-
-
