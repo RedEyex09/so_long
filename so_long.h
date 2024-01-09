@@ -6,7 +6,7 @@
 /*   By: hel-magh <hel-magh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 15:37:53 by hel-magh          #+#    #+#             */
-/*   Updated: 2024/01/08 15:21:46 by hel-magh         ###   ########.fr       */
+/*   Updated: 2024/01/09 15:02:46 by hel-magh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,18 +23,27 @@
 
 typedef struct map_check
 {
-    char	*map_line;
+	char	*map_line;
 	char	*buffer;
 	char	*trim_line;
 	char	*tmp;
 	char	character;
 	size_t	counter;
-    size_t	len;
+	size_t	len;
 	size_t	len2;
+	size_t	i;
 	size_t	counter2;
 	int		fd;
+	int		p;
+	int		e;
+	int		c;
 }	t_map_check;
 
-
-
+int	map_checker(void);
+int	map_checker_2(char *map_line, size_t map_counter, size_t map_len);
+int	new_line_checker(char *str);
+int	map_wall_checker(char *str, size_t counter, size_t len);
+int	map_first(char *str, size_t counter, size_t len);
+int	map_last(char *str, size_t len);
+int	map_content_checker(char *str);
 #endif
