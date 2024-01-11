@@ -19,7 +19,8 @@ static void	ft_vars(size_t *i, int *j, int *w_count)
 	*w_count = -1;
 }
 
-static int	ft_counter(char const *str, char c)
+static int	
+ft_counter(char const *str, char c)
 {
 	int	i;
 	int	j;

@@ -6,7 +6,7 @@
 /*   By: hel-magh <hel-magh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 15:37:53 by hel-magh          #+#    #+#             */
-/*   Updated: 2024/01/09 15:51:52 by hel-magh         ###   ########.fr       */
+/*   Updated: 2024/01/10 11:05:37 by hel-magh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,14 @@ typedef struct map_check
 	char	*tmp;
 	char	**split_line;
 	char	character;
+	char	character2;
 	size_t	counter;
 	size_t	len;
 	size_t	len2;
 	size_t	i;
+	size_t	j;
+	size_t	x;
+	size_t	y;
 	size_t	counter2;
 	int		fd;
 	int		p;
