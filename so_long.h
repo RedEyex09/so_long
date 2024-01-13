@@ -6,7 +6,7 @@
 /*   By: hel-magh <hel-magh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 15:37:53 by hel-magh          #+#    #+#             */
-/*   Updated: 2024/01/10 11:05:37 by hel-magh         ###   ########.fr       */
+/*   Updated: 2024/01/13 09:34:16 by hel-magh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,12 +44,15 @@ typedef struct map_check
 	int		c;
 }	t_map_check;
 
-int	map_checker(void);
-int	map_checker_2(char *map_line, size_t map_counter, size_t map_len);
-int	new_line_checker(char *str);
-int	map_wall_checker(char *str, size_t counter, size_t len);
-int	map_first(char *str, size_t counter, size_t len);
-int	map_last(char *str, size_t len);
-int	map_content_checker(char *str);
-
+int		map_checker(char *str);
+int		map_checker_2(char *map_line, size_t map_counter, size_t map_len);
+int		new_line_checker(char *str);
+int		map_wall_checker(char *str, size_t counter, size_t len);
+int		map_first(char *str, size_t counter, size_t len);
+int		map_last(char *str, size_t len);
+int		map_content_checker(char *str);
+int		map_position_check(char **split_line, size_t map_counter);
+char	**map_flood_fill(size_t x, size_t y,
+			char **spliteline, size_t map_counter);
+int		map_final_check(char **spliteline);
 #endif

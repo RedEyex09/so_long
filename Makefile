@@ -2,7 +2,7 @@ NAME = so_long.a
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 
-SRCS = 	map_checker.c map_checker_2.c\
+SRCS = 	map_checker.c map_checker_2.c map_path_checker.c\
 		./ft_printf/ft_printf.c ./ft_printf/ft_printf_hex.c ./ft_printf/ft_printf_ptr.c\
 		./ft_printf/ft_printf_putnbr.c ./ft_printf/ft_printf_str.c \
     	./get_next_line/get_next_line.c ./get_next_line/get_next_line_utils.c \

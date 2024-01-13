@@ -6,7 +6,7 @@
 /*   By: hel-magh <hel-magh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 09:31:42 by hel-magh          #+#    #+#             */
-/*   Updated: 2023/11/25 10:56:22 by hel-magh         ###   ########.fr       */
+/*   Updated: 2024/01/13 09:26:48 by hel-magh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,7 @@ static void	ft_vars(size_t *i, int *j, int *w_count)
 	*w_count = -1;
 }
 
-static int	
-ft_counter(char const *str, char c)
+static int	ft_counter(char const *str, char c)
 {
 	int	i;
 	int	j;
