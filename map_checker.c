@@ -6,7 +6,7 @@
 /*   By: hel-magh <hel-magh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 15:37:58 by hel-magh          #+#    #+#             */
-/*   Updated: 2024/01/13 09:33:39 by hel-magh         ###   ########.fr       */
+/*   Updated: 2024/01/13 20:01:42 by hel-magh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int	map_checker(char *str)
 	ft_memset(&map, 0, sizeof(map));
 	map.fd = open(str, O_RDONLY);
 	if (map.fd <= 0)
-		return (ft_printf("Problem in map file\n"), 0);
+		exit(1);
 	map.buffer = ft_strdup("");
 	map.map_line = ft_strdup("");
 	while (1)

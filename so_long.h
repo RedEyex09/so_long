@@ -6,16 +6,16 @@
 /*   By: hel-magh <hel-magh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 15:37:53 by hel-magh          #+#    #+#             */
-/*   Updated: 2024/01/13 09:34:16 by hel-magh         ###   ########.fr       */
+/*   Updated: 2024/01/14 13:26:08 by hel-magh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-# include "./libft/libft.h"
-# include "./get_next_line/get_next_line.h"
-# include "./ft_printf/ft_printf.h"
+# include "./libs/ft_printf/ft_printf.h"
+# include "./libs/libft/libft.h"
+# include "./libs/get_next_line/get_next_line.h"
 # include <mlx.h>
 # include <libc.h>
 # include <limits.h>
@@ -44,6 +44,30 @@ typedef struct map_check
 	int		c;
 }	t_map_check;
 
+typedef struct map_mlx
+{
+	char	*map_line;
+	char	*buffer;
+	char	*tmp;
+	char	character;
+	char	character2;
+	size_t	counter;
+	size_t	len;
+	size_t	len2;
+	size_t	i;
+	size_t	j;
+	int	x;
+	int	y;
+	int		fd;
+	int		p;
+	int		e;
+	int		c;
+	void	*mlx;
+	void	*win;
+	void	*new_img_wall;
+	void	*new_img_player;
+}	t_map_mlx;
+
 int		map_checker(char *str);
 int		map_checker_2(char *map_line, size_t map_counter, size_t map_len);
 int		new_line_checker(char *str);
@@ -55,4 +79,6 @@ int		map_position_check(char **split_line, size_t map_counter);
 char	**map_flood_fill(size_t x, size_t y,
 			char **spliteline, size_t map_counter);
 int		map_final_check(char **spliteline);
+void	mlx_init_map(char *str);
+
 #endif
