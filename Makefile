@@ -5,7 +5,7 @@ LINKS = -lmlx -framework OpenGL -framework AppKit
 LIBS = ./libs/ft_printf/libftprintf.a ./libs/libft/libft.a \
 	   ./libs/get_next_line/get_next_line.c ./libs/get_next_line/get_next_line_utils.c\
 
-SRCS = 	main.c map_checker.c map_checker_2.c map_path_checker.c mlx_inti_map.c\
+SRCS = 	main.c map_checker.c map_checker_2.c map_path_checker.c mlx_init_map.c\
 		
 		
 OBJS = ${SRCS:.c=.o}
