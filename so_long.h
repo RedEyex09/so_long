@@ -6,7 +6,7 @@
 /*   By: hel-magh <hel-magh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 15:37:53 by hel-magh          #+#    #+#             */
-/*   Updated: 2024/01/14 21:26:56 by hel-magh         ###   ########.fr       */
+/*   Updated: 2024/01/15 09:21:40 by hel-magh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ typedef struct map_mlx
 	void	*new_img_wall;
 	void	*new_img_player;
 	void	*new_img_food;
-	
+	void	*new_img_exit;
 }	t_map_mlx;
 
 int		map_checker(char *str);
