@@ -6,32 +6,59 @@
 /*   By: hel-magh <hel-magh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 13:07:28 by hel-magh          #+#    #+#             */
-/*   Updated: 2024/01/15 15:54:32 by hel-magh         ###   ########.fr       */
+/*   Updated: 2024/01/15 16:12:36 by hel-magh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
+// W : 13  UP = 126
+
+// A = 0  LEFT = 123
+
+// S = 1   DOWN = 125
+
+// D = 2	RIGHT = 124
 
 int key_hook(int key_press, t_map_mlx *map)
 {
 
 	if(key_press == 13 || key_press == 126)
 	{
-		map->map_info[map->py][map->px] = '0';
-		map->py -= 1;
-		map->map_info[map->py][map->px] = 'P';
-		ft_printf("UP\n");
-		// mlx_destroy_image(map->mlx, map->new_img_player);
-		map_mlx_read(map, 1);
-		ft_printf("doone\n");
+	if(map->map_info[map->py - 1][map->px] == '0' || map->map_info[map->py - 1][map->px] == 'C')
+		{
+			map->map_info[map->py][map->px] = '0';
+			map->map_info[map->py -1][map->px] = 'P';
+			map_mlx_read(map, 1);
+		}
 	}
 	else if(key_press == 0 || key_press == 123)
-		ft_printf("LEFT\n");
+	{
+		if(map->map_info[map->py][map->px - 1] == '0' || map->map_info[map->py][map->px - 1] == 'C')
+		{
+			map->map_info[map->py][map->px] = '0';
+			map->map_info[map->py][map->px - 1] = 'P';
+			map_mlx_read(map, 1);
+		}
+	}
 	else if(key_press == 1 || key_press == 125)
-		ft_printf("DOWN\n");
+	{
+		if(map->map_info[map->py + 1][map->px] == '0' || map->map_info[map->py + 1][map->px] == 'C')
+		{
+			map->map_info[map->py][map->px] = '0';
+			map->map_info[map->py + 1][map->px] = 'P';
+			map_mlx_read(map, 1);
+		}
+	}
 	else if(key_press == 2 || key_press == 124)
-		ft_printf("RIGHT\n");
+	{
+		if(map->map_info[map->py][map->px + 1] == '0' || map->map_info[map->py][map->px + 1] == 'C')
+		{
+			map->map_info[map->py][map->px] = '0';
+			map->map_info[map->py][map->px + 1] = 'P';
+			map_mlx_read(map, 1);
+		}
+	}
 	ft_printf("xp :%d  yp : %d\n", map->px, map->py);
 	return(map->len2);
 }
