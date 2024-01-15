@@ -6,7 +6,7 @@
 /*   By: hel-magh <hel-magh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 13:07:28 by hel-magh          #+#    #+#             */
-/*   Updated: 2024/01/15 12:31:02 by hel-magh         ###   ########.fr       */
+/*   Updated: 2024/01/15 15:54:32 by hel-magh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,16 @@
 
 int key_hook(int key_press, t_map_mlx *map)
 {
-	
+
 	if(key_press == 13 || key_press == 126)
 	{
 		map->map_info[map->py][map->px] = '0';
 		map->py -= 1;
 		map->map_info[map->py][map->px] = 'P';
 		ft_printf("UP\n");
+		// mlx_destroy_image(map->mlx, map->new_img_player);
+		map_mlx_read(map, 1);
+		ft_printf("doone\n");
 	}
 	else if(key_press == 0 || key_press == 123)
 		ft_printf("LEFT\n");
@@ -34,6 +37,7 @@ int key_hook(int key_press, t_map_mlx *map)
 }
 int map_mlx_img_set(t_map_mlx *map, char *img)
 {
+
 	int xx = map->x * 60;
 	int yy = map->y * 60;
 	mlx_put_image_to_window(map->mlx, map->win, img, xx, yy);
@@ -80,11 +84,12 @@ int map_mlx_check_2(char c, t_map_mlx *map)
 	return(0);
 }
 
-int map_mlx_read(t_map_mlx *map)
+int map_mlx_read(t_map_mlx *map, int i)
 {
-	
-	map->map_info = ft_split(map->map_line, '\n');
-	map->win = mlx_new_window(map->mlx, map->len * 60, map->counter * 60, "test wimdow");
+	if(i == 0)
+		map->map_info = ft_split(map->map_line, '\n');
+	map->y = 0;
+	mlx_clear_window(map->mlx, map->win);
 	while (map->map_info[map->y])
 	{
 		map->x = 0;
@@ -107,9 +112,9 @@ int map_mlx_read(t_map_mlx *map)
 	}
 	return (0);
 }
+
 int map_read(char *str , t_map_mlx *map)
 {
-	
 	map->fd = open(str, O_RDONLY);
 	if (map->fd <= 0)
 		return (ft_printf("eroor"), 0);
@@ -131,7 +136,8 @@ int map_read(char *str , t_map_mlx *map)
 		map->buffer = NULL;
 	}
 	map->len--;
-	map_mlx_read(map);
+	map->win = mlx_new_window(map->mlx, map->len * 60, map->counter * 60, "test wimdow");
+	map_mlx_read(map, 0);
 	return(0);
 }
 int	mlx_init_map(char *str)
@@ -139,11 +145,12 @@ int	mlx_init_map(char *str)
 	t_map_mlx	map;
 
 	ft_memset(&map, 0, sizeof(map));
+	map.str_read = str;
 	map.i = 60;
 	map.j = 60;
 	map.mlx = mlx_init();
 	
-	map_read(str, &map);
+	map_read(map.str_read, &map);
 	
 	mlx_key_hook(map.win, key_hook, &map);
 	mlx_loop(map.mlx);

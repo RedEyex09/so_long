@@ -6,7 +6,7 @@
 /*   By: hel-magh <hel-magh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 15:37:53 by hel-magh          #+#    #+#             */
-/*   Updated: 2024/01/15 12:18:47 by hel-magh         ###   ########.fr       */
+/*   Updated: 2024/01/15 15:34:10 by hel-magh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ typedef struct map_mlx
 	char	*map_line;
 	char	*buffer;
 	char	*tmp;
+	char	*str_read;
 	char	character;
 	char	character2;
 	int		counter;
@@ -84,5 +85,9 @@ char	**map_flood_fill(size_t x, size_t y,
 			char **spliteline, size_t map_counter);
 int		map_final_check(char **spliteline);
 int		mlx_init_map(char *str);
+int		map_mlx_read(t_map_mlx *map, int i);
+int		map_mlx_check_1(char c, t_map_mlx *map);
+int		map_mlx_img_set(t_map_mlx *map, char *img);
+int		map_read(char *str, t_map_mlx *map);
 
 #endif
