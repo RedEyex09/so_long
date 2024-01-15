@@ -6,18 +6,31 @@
 /*   By: hel-magh <hel-magh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 13:07:28 by hel-magh          #+#    #+#             */
-/*   Updated: 2024/01/15 11:56:50 by hel-magh         ###   ########.fr       */
+/*   Updated: 2024/01/15 12:31:02 by hel-magh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
+
 int key_hook(int key_press, t_map_mlx *map)
 {
-
-	if(key_press >= 0)
-		ft_printf("%s", map->map_info[1]);
-	return(0);
+	
+	if(key_press == 13 || key_press == 126)
+	{
+		map->map_info[map->py][map->px] = '0';
+		map->py -= 1;
+		map->map_info[map->py][map->px] = 'P';
+		ft_printf("UP\n");
+	}
+	else if(key_press == 0 || key_press == 123)
+		ft_printf("LEFT\n");
+	else if(key_press == 1 || key_press == 125)
+		ft_printf("DOWN\n");
+	else if(key_press == 2 || key_press == 124)
+		ft_printf("RIGHT\n");
+	ft_printf("xp :%d  yp : %d\n", map->px, map->py);
+	return(map->len2);
 }
 int map_mlx_img_set(t_map_mlx *map, char *img)
 {
@@ -79,12 +92,15 @@ int map_mlx_read(t_map_mlx *map)
 		{
 			if (map->map_info[map->y][map->x] == '1' || map->map_info[map->y][map->x] == 'P')
 			{
+				if (map->map_info[map->y][map->x] == 'P')
+				{
+					map->px = map->x;
+					map->py = map->y;
+				}
 				map_mlx_check_1(map->map_info[map->y][map->x], map);
 			}
 			else if (map->map_info[map->y][map->x] == 'C' || map->map_info[map->y][map->x] == 'E')
-			{
 				map_mlx_check_2(map->map_info[map->y][map->x], map);
-			}
 			map->x++;
 		}
 		map->y++;

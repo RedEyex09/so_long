@@ -6,7 +6,7 @@
 /*   By: hel-magh <hel-magh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 15:37:53 by hel-magh          #+#    #+#             */
-/*   Updated: 2024/01/15 09:21:40 by hel-magh         ###   ########.fr       */
+/*   Updated: 2024/01/15 12:18:47 by hel-magh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,8 @@ typedef struct map_mlx
 	int		x;
 	int		y;
 	int		fd;
-	int		p;
+	int		px;
+	int		py;
 	int		e;
 	int		c;
 	void	*mlx;
