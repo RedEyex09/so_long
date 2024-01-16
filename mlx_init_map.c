@@ -6,19 +6,11 @@
 /*   By: hel-magh <hel-magh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 13:07:28 by hel-magh          #+#    #+#             */
-/*   Updated: 2024/01/15 18:17:39 by hel-magh         ###   ########.fr       */
+/*   Updated: 2024/01/16 15:47:43 by hel-magh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-// W : 13  UP = 126
-
-// A = 0  LEFT = 123
-
-// S = 1   DOWN = 125
-
-// D = 2	RIGHT = 124
 
 int key_hook_left(t_map_mlx *map)
 {
@@ -28,6 +20,7 @@ int key_hook_left(t_map_mlx *map)
 			exit(0);
 		map->map_info[map->py][map->px] = '0';
 		map->map_info[map->py][map->px - 1] = 'P';
+		map->e++;
 		map_mlx_read(map, 1);
 	}
 	else if(map->map_info[map->py][map->px - 1] == '0' || map->map_info[map->py][map->px - 1] == 'C')
@@ -36,6 +29,7 @@ int key_hook_left(t_map_mlx *map)
 			 map->c--;
 			map->map_info[map->py][map->px] = '0';
 			map->map_info[map->py][map->px - 1] = 'P';
+			map->e++;
 			map_mlx_read(map, 1);
 		}
 	return(0);
@@ -48,6 +42,7 @@ int key_hook_down(t_map_mlx *map)
 			exit(0);
 		map->map_info[map->py][map->px] = '0';
 		map->map_info[map->py + 1][map->px] = 'P';
+		map->e++;
 		map_mlx_read(map, 1);
 	}
 	else if(map->map_info[map->py + 1][map->px] == '0' || map->map_info[map->py + 1][map->px] == 'C')
@@ -56,8 +51,10 @@ int key_hook_down(t_map_mlx *map)
 			 map->c--;
 			map->map_info[map->py][map->px] = '0';
 			map->map_info[map->py + 1][map->px] = 'P';
+			map->e++;
 			map_mlx_read(map, 1);
 		}
+	
 	return(0);
 }
 int key_hook_right(t_map_mlx *map)
@@ -68,6 +65,7 @@ int key_hook_right(t_map_mlx *map)
 			exit(0);
 		map->map_info[map->py][map->px] = '0';
 		map->map_info[map->py][map->px + 1] = 'P';
+		map->e++;
 		map_mlx_read(map, 1);
 	}
 	else if(map->map_info[map->py][map->px + 1] == '0' || map->map_info[map->py][map->px + 1] == 'C')
@@ -76,8 +74,10 @@ int key_hook_right(t_map_mlx *map)
 			 map->c--;
 			map->map_info[map->py][map->px] = '0';
 			map->map_info[map->py][map->px + 1] = 'P';
+			map->e++;
 			map_mlx_read(map, 1);
 		}
+
 	return (0);
 }
 int key_hook_up(t_map_mlx *map)
@@ -97,7 +97,9 @@ int key_hook_up(t_map_mlx *map)
 			map->map_info[map->py][map->px] = '0';
 			map->map_info[map->py -1][map->px] = 'P';
 			map_mlx_read(map, 1);
+			map->e++;
 		}
+		
 	return(0);
 }
 
@@ -113,7 +115,6 @@ int key_hook(int key_press, t_map_mlx *map)
 		key_hook_down(map);
 	else if(key_press == 2 || key_press == 124)
 		key_hook_right(map);
-	map->e++;
 	ft_printf("Player Moves -> %d\n", map->e);
 	ft_printf("How much food left : %d\n", map->c);
 	return(0);
@@ -129,41 +130,18 @@ int map_mlx_img_set(t_map_mlx *map, char *img)
 
 int map_mlx_check_1(char c, t_map_mlx *map)
 {
-	
-	map->i = 60;
-	map->j = 60;
 	if (c == '1')
-	{
-		map->new_img_wall = mlx_xpm_file_to_image(map->mlx, "src/wall.xpm",
-					&map->i, &map->j);
 		map_mlx_img_set(map, map->new_img_wall);
-	}
 	else if (c == 'P')
-	{
-		map->new_img_player = mlx_xpm_file_to_image(map->mlx, "src/player.xpm",
-					&map->i, &map->j);
 		map_mlx_img_set(map, map->new_img_player);
-	}
 	return(0);
 }
 int map_mlx_check_2(char c, t_map_mlx *map)
 {
-	
-	map->i = 60;
-	map->j = 60;
 	if (c == 'C')
-	{
-		map->new_img_food = mlx_xpm_file_to_image(map->mlx, "src/food.xpm",
-					&map->i, &map->j);
 		map_mlx_img_set(map, map->new_img_food);
-		
-	}
 	else if (c == 'E')
-	{
-		map->new_img_exit = mlx_xpm_file_to_image(map->mlx, "src/exit.xpm",
-					&map->i, &map->j);
 		map_mlx_img_set(map, map->new_img_exit);
-	}
 	return(0);
 }
 
@@ -207,6 +185,17 @@ int c_counter(char *str)
 	}
 	return(c);
 }
+int map_len_validation(t_map_mlx *map)
+{
+	if(map->len < 43 && map->counter <= 23)
+		map->win = mlx_new_window(map->mlx, map->len * 60, map->counter * 60, "test wimdow");
+	else
+	{
+		ft_printf("SIZE OF MAP TOO BIG FOR SCREEN\n");
+		exit(0);
+	}
+	return(0);
+}
 
 int map_read(char *str , t_map_mlx *map)
 {
@@ -232,6 +221,7 @@ int map_read(char *str , t_map_mlx *map)
 	}
 	map->len--;
 	map->c = c_counter (map->map_line);
+	map_len_validation(map);
 	map->win = mlx_new_window(map->mlx, map->len * 60, map->counter * 60, "test wimdow");
 	map_mlx_read(map, 0);
 	return(0);
@@ -245,7 +235,14 @@ int	mlx_init_map(char *str)
 	map.i = 60;
 	map.j = 60;
 	map.mlx = mlx_init();
-	
+	map.new_img_food = mlx_xpm_file_to_image(map.mlx, "src/food.xpm",
+					&map.i, &map.j);
+	map.new_img_exit = mlx_xpm_file_to_image(map.mlx, "src/exit.xpm",
+					&map.i, &map.j);
+	map.new_img_player = mlx_xpm_file_to_image(map.mlx, "src/player.xpm",
+					&map.i, &map.j);
+	map.new_img_wall = mlx_xpm_file_to_image(map.mlx, "src/wall.xpm",
+					&map.i, &map.j);
 	map_read(map.str_read, &map);
 	
 	mlx_hook(map.win, 2, 0, key_hook, &map);
