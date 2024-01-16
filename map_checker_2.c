@@ -6,7 +6,7 @@
 /*   By: hel-magh <hel-magh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 14:54:44 by hel-magh          #+#    #+#             */
-/*   Updated: 2024/01/09 15:12:01 by hel-magh         ###   ########.fr       */
+/*   Updated: 2024/01/16 17:36:21 by hel-magh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,4 +102,31 @@ int	map_wall_checker(char *str, size_t counter, size_t len)
 		}
 	}
 	return (1);
+}
+
+int	map_name_check(char *str)
+{
+	int	i;
+	int	v;
+
+	i = 0;
+	v = 0;
+	while (str[i])
+	{
+		if (str[i] == '.' && str[i + 1] == 'b')
+		{
+			if (str[i + 2] == 'e' && str[i + 3] == 'r')
+			{
+				if (str[i + 4] == '\0')
+					v = 1;
+			}
+		}
+		i++;
+	}
+	if (!v)
+	{
+		ft_printf("NOT A VALID: .ber\n");
+		exit(0);
+	}
+	return (0);
 }

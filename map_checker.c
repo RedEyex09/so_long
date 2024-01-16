@@ -6,7 +6,7 @@
 /*   By: hel-magh <hel-magh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 15:37:58 by hel-magh          #+#    #+#             */
-/*   Updated: 2024/01/13 20:01:42 by hel-magh         ###   ########.fr       */
+/*   Updated: 2024/01/16 16:11:04 by hel-magh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ int	map_checker(char *str)
 	t_map_check	map;
 
 	ft_memset(&map, 0, sizeof(map));
+	map_name_check(str);
 	map.fd = open(str, O_RDONLY);
 	if (map.fd <= 0)
 		exit(1);
