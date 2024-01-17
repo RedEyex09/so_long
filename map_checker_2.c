@@ -6,7 +6,7 @@
 /*   By: hel-magh <hel-magh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 14:54:44 by hel-magh          #+#    #+#             */
-/*   Updated: 2024/01/16 17:36:21 by hel-magh         ###   ########.fr       */
+/*   Updated: 2024/01/17 20:18:15 by hel-magh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int	map_last(char *str, size_t len)
 		if (str[wall.i] != '1')
 		{
 			ft_printf("last line invalid\n");
-			return (0);
+			exit(0);
 		}
 		wall.i++;
 	}
@@ -66,7 +66,7 @@ int	map_first(char *str, size_t counter, size_t len)
 		if (str[wall.counter] != '1')
 		{
 			ft_printf("Fist line invalid\n");
-			return (0);
+			exit(0);
 		}
 		wall.counter++;
 	}
