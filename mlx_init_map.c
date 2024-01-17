@@ -6,7 +6,7 @@
 /*   By: hel-magh <hel-magh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 13:07:28 by hel-magh          #+#    #+#             */
-/*   Updated: 2024/01/16 18:13:17 by hel-magh         ###   ########.fr       */
+/*   Updated: 2024/01/17 10:14:59 by hel-magh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,10 +58,8 @@ int	map_read(char *str, t_map_mlx *map)
 		map->counter++;
 		map->tmp = map->map_line;
 		map->map_line = ft_strjoin(map->tmp, map->buffer);
-		free(map->tmp);
-		map->tmp = NULL;
-		free(map->buffer);
-		map->buffer = NULL;
+		ft_free(map->tmp);
+		ft_free(map->buffer);
 	}
 	map->len--;
 	map->c = c_counter (map->map_line);
@@ -89,6 +87,8 @@ int	mlx_init_map(char *str)
 			&map.i, &map.j);
 	map_read(map.str_read, &map);
 	mlx_hook(map.win, 2, 0, key_hook, &map);
+	ft_free(map.map_line);
 	mlx_loop(map.mlx);
+	ft_free_double(map.map_info, map.counter);
 	return (0);
 }

@@ -6,13 +6,13 @@
 /*   By: hel-magh <hel-magh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 09:15:06 by hel-magh          #+#    #+#             */
-/*   Updated: 2024/01/15 18:48:21 by hel-magh         ###   ########.fr       */
+/*   Updated: 2024/01/17 10:08:36 by hel-magh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	map_final_check(char **spliteline)
+int	map_final_check(char **spliteline, size_t map_counter)
 {
 	t_map_check	fill;
 
@@ -28,6 +28,7 @@ int	map_final_check(char **spliteline)
 			else
 			{
 				ft_printf("The Path isn't Valid\n");
+				ft_free_double(spliteline, map_counter);
 				return (0);
 			}
 		}
@@ -73,5 +74,5 @@ int	map_position_check(char **split_line, size_t map_counter)
 		fill.i++;
 	}
 	fill.split_line = map_flood_fill(fill.x, fill.y, split_line, map_counter);
-	return (map_final_check(fill.split_line));
+	return (map_final_check(fill.split_line, map_counter));
 }

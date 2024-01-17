@@ -6,7 +6,7 @@
 /*   By: hel-magh <hel-magh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 15:37:58 by hel-magh          #+#    #+#             */
-/*   Updated: 2024/01/16 16:11:04 by hel-magh         ###   ########.fr       */
+/*   Updated: 2024/01/17 10:08:29 by hel-magh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,17 @@ int	map_checker_2(char *map_line, size_t map_counter, size_t map_len)
 		{
 			map.trim_line = ft_strtrim(map_line, "\n01EPC");
 			if (map.trim_line[0] == '\0')
+			{
+				ft_free(map_line);
+				ft_free(map.trim_line);
+				ft_free_double(map.split_line, map_counter);
 				return (1);
+			}
 		}
 	}
+	ft_free(map_line);
+	ft_free(map.trim_line);
+	ft_free_double(map.split_line, map_counter);
 	return (0);
 }
 
@@ -70,10 +78,8 @@ int	map_checker(char *str)
 		map.counter++;
 		map.tmp = map.map_line;
 		map.map_line = ft_strjoin(map.tmp, map.buffer);
-		free(map.tmp);
-		map.tmp = NULL;
-		free(map.buffer);
-		map.buffer = NULL;
+		ft_free(map.tmp);
+		ft_free(map.buffer);
 	}
 	return (map_checker_2(map.map_line, map.counter, map.len));
 }
