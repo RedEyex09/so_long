@@ -6,7 +6,7 @@
 /*   By: hel-magh <hel-magh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 15:37:58 by hel-magh          #+#    #+#             */
-/*   Updated: 2024/01/17 10:08:29 by hel-magh         ###   ########.fr       */
+/*   Updated: 2024/01/17 16:06:05 by hel-magh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,13 @@ int	map_checker_2(char *map_line, size_t map_counter, size_t map_len)
 	return (0);
 }
 
+void	ft_close(int fd)
+{
+	ft_printf("Problem in file descriptor\n");
+	close (fd);
+	exit(0);
+}
+
 int	map_checker(char *str)
 {
 	t_map_check	map;
@@ -65,8 +72,7 @@ int	map_checker(char *str)
 	map_name_check(str);
 	map.fd = open(str, O_RDONLY);
 	if (map.fd <= 0)
-		exit(1);
-	map.buffer = ft_strdup("");
+		ft_close(map.fd);
 	map.map_line = ft_strdup("");
 	while (1)
 	{
@@ -81,5 +87,6 @@ int	map_checker(char *str)
 		ft_free(map.tmp);
 		ft_free(map.buffer);
 	}
+	ft_free(map.buffer);
 	return (map_checker_2(map.map_line, map.counter, map.len));
 }

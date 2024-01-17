@@ -6,7 +6,7 @@
 /*   By: hel-magh <hel-magh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 09:36:07 by hel-magh          #+#    #+#             */
-/*   Updated: 2024/01/17 09:49:23 by hel-magh         ###   ########.fr       */
+/*   Updated: 2024/01/17 16:08:27 by hel-magh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,11 @@
 
 void	ft_free(char *str)
 {
-	free(str);
-	str = NULL;
+	if (str != NULL)
+	{
+		free(str);
+		str = NULL;
+	}
 }
 
 void	*ft_free_double(char **str, size_t count)
@@ -29,5 +32,6 @@ void	*ft_free_double(char **str, size_t count)
 		i++;
 	}
 	free(str);
+	str = NULL;
 	return (NULL);
 }

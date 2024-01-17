@@ -6,7 +6,7 @@
 /*   By: hel-magh <hel-magh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 15:37:53 by hel-magh          #+#    #+#             */
-/*   Updated: 2024/01/17 09:58:54 by hel-magh         ###   ########.fr       */
+/*   Updated: 2024/01/17 16:04:54 by hel-magh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,5 +102,6 @@ int		key_hook_down(t_map_mlx *map);
 int		key_hook_left(t_map_mlx *map);
 void	ft_free(char *str);
 void	*ft_free_double(char **str, size_t count);
+void	ft_close(int fd);
 
 #endif
