@@ -6,7 +6,7 @@
 /*   By: hel-magh <hel-magh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 15:37:53 by hel-magh          #+#    #+#             */
-/*   Updated: 2024/01/17 16:04:54 by hel-magh         ###   ########.fr       */
+/*   Updated: 2024/01/17 20:59:27 by hel-magh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ int		map_position_check(char **split_line, size_t map_counter);
 char	**map_flood_fill(size_t x, size_t y,
 			char **spliteline, size_t map_counter);
 int		map_final_check(char **spliteline, size_t map_counter);
-int		mlx_init_map(char *str);
+void	mlx_init_map(char *str);
 int		map_mlx_read(t_map_mlx *map, int i);
 int		map_mlx_img_set(t_map_mlx *map, char *img);
 int		map_read(char *str, t_map_mlx *map);

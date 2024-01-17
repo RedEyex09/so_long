@@ -6,7 +6,7 @@
 /*   By: hel-magh <hel-magh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 13:07:28 by hel-magh          #+#    #+#             */
-/*   Updated: 2024/01/17 16:05:13 by hel-magh         ###   ########.fr       */
+/*   Updated: 2024/01/17 21:00:16 by hel-magh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,17 @@ int	c_counter(char *str)
 	return (c);
 }
 
+int	notify(t_map_mlx *map)
+{
+	mlx_destroy_window(map->mlx, map->win);
+	exit(0);
+}
+
 int	map_len_validation(t_map_mlx *map)
 {
 	if (map->len < 43 && map->counter <= 23)
 		map->win = mlx_new_window(map->mlx, map->len * 60,
-				map->counter * 60, "test wimdow");
+				map->counter * 60, "so_long");
 	else
 	{
 		ft_free(map->map_line);
@@ -71,7 +77,7 @@ int	map_read(char *str, t_map_mlx *map)
 	return (0);
 }
 
-int	mlx_init_map(char *str)
+void	mlx_init_map(char *str)
 {
 	t_map_mlx	map;
 
@@ -88,8 +94,14 @@ int	mlx_init_map(char *str)
 			&map.i, &map.j);
 	map.new_img_wall = mlx_xpm_file_to_image(map.mlx, "src/wall.xpm",
 			&map.i, &map.j);
+	if (!map.new_img_exit || !map.new_img_food
+		|| !map.new_img_player || !map.new_img_wall)
+	{
+		ft_printf("Poblem in image instialisation\n");
+		exit(0);
+	}
 	map_read(map.str_read, &map);
 	mlx_hook(map.win, 2, 0, key_hook, &map);
+	mlx_hook(map.win, 17, 0, notify, &map);
 	mlx_loop(map.mlx);
-	return (0);
 }
