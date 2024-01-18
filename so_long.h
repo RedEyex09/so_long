@@ -6,7 +6,7 @@
 /*   By: hel-magh <hel-magh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 15:37:53 by hel-magh          #+#    #+#             */
-/*   Updated: 2024/01/17 20:59:27 by hel-magh         ###   ########.fr       */
+/*   Updated: 2024/01/18 11:20:40 by hel-magh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ typedef struct map_mlx
 	void	*new_img_player;
 	void	*new_img_food;
 	void	*new_img_exit;
+	void	*new_img_exit_open;
 }	t_map_mlx;
 
 int		map_checker(char *str);
@@ -103,5 +104,6 @@ int		key_hook_left(t_map_mlx *map);
 void	ft_free(char *str);
 void	*ft_free_double(char **str, size_t count);
 void	ft_close(int fd);
+void	malx_img_init(t_map_mlx *map);
 
 #endif

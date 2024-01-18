@@ -6,7 +6,7 @@
 /*   By: hel-magh <hel-magh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 15:37:58 by hel-magh          #+#    #+#             */
-/*   Updated: 2024/01/17 16:18:00 by hel-magh         ###   ########.fr       */
+/*   Updated: 2024/01/18 09:20:54 by hel-magh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	new_line_checker(char *str)
 	{
 		if (str[new.counter] == '\n' && str[new.counter + 1] == '\n')
 		{
-			ft_printf("there is a new line\n");
+			ft_printf("Error\nThere is a new line\n");
 			return (0);
 		}
 		new.counter++;
@@ -57,7 +57,7 @@ int	map_checker_2(char *map_line, size_t map_counter, size_t map_len)
 
 void	ft_close(int fd)
 {
-	ft_printf("Problem in file descriptor\n");
+	ft_printf("Error\nProblem in file descriptor\n");
 	close (fd);
 	exit(0);
 }

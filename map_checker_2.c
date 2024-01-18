@@ -6,7 +6,7 @@
 /*   By: hel-magh <hel-magh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 14:54:44 by hel-magh          #+#    #+#             */
-/*   Updated: 2024/01/17 20:18:15 by hel-magh         ###   ########.fr       */
+/*   Updated: 2024/01/18 09:03:36 by hel-magh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	map_content_checker(char *str)
 	}
 	if (content.p != 1 || content.e != 1 || content.c <= 0)
 	{
-		ft_printf("Not a valid content EPC\n");
+		ft_printf("Error\nNot a valid content EPC\n");
 		return (0);
 	}
 	return (1);
@@ -48,7 +48,7 @@ int	map_last(char *str, size_t len)
 	{
 		if (str[wall.i] != '1')
 		{
-			ft_printf("last line invalid\n");
+			ft_printf("Error\nThe Last line is invalid\n");
 			exit(0);
 		}
 		wall.i++;
@@ -65,7 +65,7 @@ int	map_first(char *str, size_t counter, size_t len)
 	{
 		if (str[wall.counter] != '1')
 		{
-			ft_printf("Fist line invalid\n");
+			ft_printf("Error\n The Fist line is invalid\n");
 			exit(0);
 		}
 		wall.counter++;
@@ -96,7 +96,7 @@ int	map_wall_checker(char *str, size_t counter, size_t len)
 					wall.len = 0;
 				}
 				else
-					return (ft_printf("not valid walls\n"), 0);
+					return (ft_printf("Error\nNot valid walls\n"), 0);
 			}
 			wall.counter++;
 		}
@@ -125,7 +125,7 @@ int	map_name_check(char *str)
 	}
 	if (!v)
 	{
-		ft_printf("NOT A VALID: .ber\n");
+		ft_printf("Error\nNot a valid .ber\n");
 		exit(0);
 	}
 	return (0);

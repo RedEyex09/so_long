@@ -6,7 +6,7 @@
 /*   By: hel-magh <hel-magh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 17:43:37 by hel-magh          #+#    #+#             */
-/*   Updated: 2024/01/17 14:36:34 by hel-magh         ###   ########.fr       */
+/*   Updated: 2024/01/18 11:28:11 by hel-magh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,10 @@ int	map_mlx_check_2(char c, t_map_mlx *map)
 {
 	if (c == 'C')
 		map_mlx_img_set(map, map->new_img_food);
-	else if (c == 'E')
+	else if (c == 'E' && map->c > 0)
 		map_mlx_img_set(map, map->new_img_exit);
+	else if (c == 'E' && map->c == 0)
+		map_mlx_img_set(map, map->new_img_exit_open);
 	return (0);
 }
 

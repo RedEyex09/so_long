@@ -6,7 +6,7 @@
 /*   By: hel-magh <hel-magh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 17:47:28 by hel-magh          #+#    #+#             */
-/*   Updated: 2024/01/17 16:07:15 by hel-magh         ###   ########.fr       */
+/*   Updated: 2024/01/18 09:06:09 by hel-magh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,10 @@ int	key_hook_left(t_map_mlx *map)
 	if (map->c == 0 && map->map_info[map->py][map->px - 1] != '1')
 	{
 		if (map->map_info[map->py][map->px - 1] == 'E')
+		{
+			ft_printf("WINNER\n");
 			exit(0);
+		}
 		map->map_info[map->py][map->px] = '0';
 		map->map_info[map->py][map->px - 1] = 'P';
 		map->e++;
@@ -41,7 +44,10 @@ int	key_hook_down(t_map_mlx *map)
 	if (map->c == 0 && map->map_info[map->py + 1][map->px] != '1')
 	{
 		if (map->map_info[map->py + 1][map->px] == 'E')
+		{
+			ft_printf("WINNER\n");
 			exit(0);
+		}
 		map->map_info[map->py][map->px] = '0';
 		map->map_info[map->py + 1][map->px] = 'P';
 		map->e++;
@@ -65,7 +71,10 @@ int	key_hook_right(t_map_mlx *map)
 	if (map->c == 0 && map->map_info[map->py][map->px + 1] != '1')
 	{
 		if (map->map_info[map->py][map->px + 1] == 'E')
+		{
+			ft_printf("WINNER\n");
 			exit(0);
+		}
 		map->map_info[map->py][map->px] = '0';
 		map->map_info[map->py][map->px + 1] = 'P';
 		map->e++;
@@ -89,7 +98,10 @@ int	key_hook_up(t_map_mlx *map)
 	if (map->c == 0 && map->map_info[map->py - 1][map->px] != '1')
 	{
 		if (map->map_info[map->py - 1][map->px] == 'E')
+		{
+			ft_printf("WINNER\n");
 			exit(0);
+		}
 		map->map_info[map->py][map->px] = '0';
 		map->map_info[map->py - 1][map->px] = 'P';
 		map_mlx_read(map, 1);
@@ -110,7 +122,10 @@ int	key_hook_up(t_map_mlx *map)
 int	key_hook(int key_press, t_map_mlx *map)
 {
 	if (key_press == 53)
+	{
+		ft_printf("Quitting ESC\n");
 		exit(0);
+	}
 	else if (key_press == 13 || key_press == 126)
 		key_hook_up(map);
 	else if (key_press == 0 || key_press == 123)
@@ -120,6 +135,5 @@ int	key_hook(int key_press, t_map_mlx *map)
 	else if (key_press == 2 || key_press == 124)
 		key_hook_right(map);
 	ft_printf("Player Moves -> %d\n", map->e);
-	ft_printf("How much food left : %d\n", map->c);
 	return (0);
 }

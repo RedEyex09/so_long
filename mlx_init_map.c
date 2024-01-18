@@ -6,7 +6,7 @@
 /*   By: hel-magh <hel-magh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 13:07:28 by hel-magh          #+#    #+#             */
-/*   Updated: 2024/01/17 21:00:16 by hel-magh         ###   ########.fr       */
+/*   Updated: 2024/01/18 11:27:56 by hel-magh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ int	c_counter(char *str)
 
 int	notify(t_map_mlx *map)
 {
+	ft_printf("Exit X\n");
 	mlx_destroy_window(map->mlx, map->win);
 	exit(0);
 }
@@ -41,9 +42,7 @@ int	map_len_validation(t_map_mlx *map)
 				map->counter * 60, "so_long");
 	else
 	{
-		ft_free(map->map_line);
-		ft_free_double(map->map_info, map->counter);
-		ft_printf("SIZE OF MAP TOO BIG FOR SCREEN\n");
+		ft_printf("Error\nSize of map is big for screen\n");
 		exit(0);
 	}
 	return (0);
@@ -77,29 +76,37 @@ int	map_read(char *str, t_map_mlx *map)
 	return (0);
 }
 
+void	malx_img_init(t_map_mlx *map)
+{
+	map->i = 60;
+	map->j = 60;
+	map->new_img_food = mlx_xpm_file_to_image(map->mlx, "src/food.xpm",
+			&map->i, &map->j);
+	map->new_img_exit = mlx_xpm_file_to_image(map->mlx, "src/exit.xpm",
+			&map->i, &map->j);
+	map->new_img_player = mlx_xpm_file_to_image(map->mlx, "src/player.xpm",
+			&map->i, &map->j);
+	map->new_img_wall = mlx_xpm_file_to_image(map->mlx, "src/wall.xpm",
+			&map->i, &map->j);
+	map->new_img_exit_open = mlx_xpm_file_to_image(map->mlx,
+			"src/exit_open.xpm", &map->i, &map->j);
+	if (!map->new_img_exit || !map->new_img_food
+		|| !map->new_img_player || !map->new_img_wall
+		|| !map->new_img_exit_open)
+	{
+		ft_printf("Error\nPoblem in image instialisation\n");
+		exit(0);
+	}
+}
+
 void	mlx_init_map(char *str)
 {
 	t_map_mlx	map;
 
 	ft_memset(&map, 0, sizeof(map));
 	map.str_read = str;
-	map.i = 60;
-	map.j = 60;
 	map.mlx = mlx_init();
-	map.new_img_food = mlx_xpm_file_to_image(map.mlx, "src/food.xpm",
-			&map.i, &map.j);
-	map.new_img_exit = mlx_xpm_file_to_image(map.mlx, "src/exit.xpm",
-			&map.i, &map.j);
-	map.new_img_player = mlx_xpm_file_to_image(map.mlx, "src/player.xpm",
-			&map.i, &map.j);
-	map.new_img_wall = mlx_xpm_file_to_image(map.mlx, "src/wall.xpm",
-			&map.i, &map.j);
-	if (!map.new_img_exit || !map.new_img_food
-		|| !map.new_img_player || !map.new_img_wall)
-	{
-		ft_printf("Poblem in image instialisation\n");
-		exit(0);
-	}
+	malx_img_init(&map);
 	map_read(map.str_read, &map);
 	mlx_hook(map.win, 2, 0, key_hook, &map);
 	mlx_hook(map.win, 17, 0, notify, &map);
