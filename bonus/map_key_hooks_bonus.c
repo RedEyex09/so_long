@@ -6,7 +6,7 @@
 /*   By: hel-magh <hel-magh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 17:47:28 by hel-magh          #+#    #+#             */
-/*   Updated: 2024/01/20 10:52:14 by hel-magh         ###   ########.fr       */
+/*   Updated: 2024/01/20 13:40:02 by hel-magh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int	key_hook_down(t_map_mlx *map)
 		map->map_info[map->py][map->px] = '0';
 		map->map_info[map->py + 1][map->px] = 'P';
 		map_mlx_read(map, 1);
-		map_printer(map);
+		// map_printer(map);
 	}
 	else if (map->map_info[map->py + 1][map->px] == '0'
 		|| map->map_info[map->py + 1][map->px] == 'C')
@@ -63,7 +63,7 @@ int	key_hook_down(t_map_mlx *map)
 		map->map_info[map->py][map->px] = '0';
 		map->map_info[map->py + 1][map->px] = 'P';
 		map_mlx_read(map, 1);
-		map_printer(map);
+		 map_printer(map);
 	}
 	return (0);
 }
@@ -119,7 +119,7 @@ int	key_hook_up(t_map_mlx *map)
 		map->map_info[map->py][map->px] = '0';
 		map->map_info[map->py -1][map->px] = 'P';
 		map_mlx_read(map, 1);
-		map_printer(map);
+		 map_printer(map);
 	}
 	return (0);
 }
@@ -139,5 +139,6 @@ int	key_hook(int key_press, t_map_mlx *map)
 		key_hook_down(map);
 	else if (key_press == 2 || key_press == 124)
 		key_hook_right(map);
+	// map_printer(map);
 	return (0);
 }

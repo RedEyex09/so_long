@@ -6,7 +6,7 @@
 /*   By: hel-magh <hel-magh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 13:07:28 by hel-magh          #+#    #+#             */
-/*   Updated: 2024/01/20 11:03:01 by hel-magh         ###   ########.fr       */
+/*   Updated: 2024/01/20 13:40:11 by hel-magh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,7 @@ void	mlx_init_map(char *str)
 	malx_img_init(&map);
 	map_read(map.str_read, &map);
 	map_init_printer(&map);
+	mlx_loop_hook(map.mlx, enemy, &map);
 	mlx_hook(map.win, 2, 0, key_hook, &map);
 	mlx_hook(map.win, 17, 0, notify, &map);
 	mlx_loop(map.mlx);

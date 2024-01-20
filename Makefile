@@ -11,7 +11,7 @@ SRCS = 	main.c map_checker.c map_checker_2.c map_path_checker.c mlx_init_map.c\
 SRCS_BONUS = ./bonus/main_bonus.c ./bonus/map_checker_bonus.c ./bonus/map_checker_bonus2.c\
 		./bonus/map_path_checker_bonus.c ./bonus/mlx_init_map_bonus.c ./bonus/map_key_hooks_bonus.c\
 		./bonus/map_mlx_imgs_bonus.c ./bonus/ft_free_bonus.c ./bonus/utils_bonus.c\
-		./bonus/utils_xpm_bonus.c\
+		./bonus/utils_xpm_bonus.c ./bonus/utils_enemy.c\
 	
 OBJS = ${SRCS:.c=.o}
 OBJS_BONUS = ${SRCS_BONUS:.c=.o}

@@ -6,7 +6,7 @@
 /*   By: hel-magh <hel-magh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 15:37:53 by hel-magh          #+#    #+#             */
-/*   Updated: 2024/01/20 11:00:45 by hel-magh         ###   ########.fr       */
+/*   Updated: 2024/01/20 14:53:09 by hel-magh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ typedef struct map_check
 	int		p;
 	int		e;
 	int		c;
+	int		n;
 }	t_map_check;
 
 typedef struct map_mlx
@@ -64,6 +65,8 @@ typedef struct map_mlx
 	int		fd;
 	int		px;
 	int		py;
+	int		nx;
+	int		ny;
 	int		ps;
 	int		e;
 	int		c;
@@ -117,4 +120,10 @@ void	map_printer(t_map_mlx *map);
 void	map_init_printer(t_map_mlx *map);
 void	mlx_player_init(t_map_mlx *map);
 int		map_mlx_img_set_player(t_map_mlx *map);
+int		enemy(t_map_mlx *map);
+int		enemy_up(t_map_mlx *map);
+int		enemy_right(t_map_mlx *map);
+int		enemy_down(t_map_mlx *map);
+int		enemy_left(t_map_mlx *map);
+
 #endif

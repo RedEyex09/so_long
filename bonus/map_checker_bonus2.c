@@ -6,7 +6,7 @@
 /*   By: hel-magh <hel-magh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 14:54:44 by hel-magh          #+#    #+#             */
-/*   Updated: 2024/01/19 18:35:54 by hel-magh         ###   ########.fr       */
+/*   Updated: 2024/01/20 11:27:31 by hel-magh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,14 @@ int	map_content_checker(char *str)
 			content.e++;
 		else if (str[content.counter2] == 'C')
 			content.c++;
+		else if (str[content.counter2] == 'N')
+			content.n++;
 		content.counter2++;
 	}
-	if (content.p != 1 || content.e != 1 || content.c <= 0)
+	if (content.p != 1 || content.e != 1 || content.c <= 0
+		|| content.n <= 0)
 	{
-		ft_printf("Error\nNot a valid content EPC\n");
+		ft_printf("Error\nNot a valid content NEPC\n");
 		return (0);
 	}
 	return (1);
