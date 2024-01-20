@@ -6,7 +6,7 @@
 /*   By: hel-magh <hel-magh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 15:37:53 by hel-magh          #+#    #+#             */
-/*   Updated: 2024/01/20 18:09:17 by hel-magh         ###   ########.fr       */
+/*   Updated: 2024/01/20 18:39:26 by hel-magh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,5 +126,5 @@ int		enemy_right(t_map_mlx *map);
 int		enemy_down(t_map_mlx *map);
 int		enemy_left(t_map_mlx *map);
 void	win_lose(int c);
-
+int		is_somthing(char c);
 #endif

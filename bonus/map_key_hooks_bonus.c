@@ -6,7 +6,7 @@
 /*   By: hel-magh <hel-magh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 17:47:28 by hel-magh          #+#    #+#             */
-/*   Updated: 2024/01/20 18:34:14 by hel-magh         ###   ########.fr       */
+/*   Updated: 2024/01/20 18:41:35 by hel-magh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,7 @@ int	key_hook_left(t_map_mlx *map)
 		map_mlx_read(map, 1);
 		map_printer(map);
 	}
-	else if (map->map_info[map->py][map->px - 1] == '0'
-		|| map->map_info[map->py][map->px - 1] == 'C'
-		|| map->map_info[map->py][map->px - 1] == 'N')
+	else if (is_somthing(map->map_info[map->py][map->px - 1]) == 1)
 	{
 		if (map->map_info[map->py][map->px - 1] == 'C')
 			map->c--;
@@ -52,9 +50,7 @@ int	key_hook_down(t_map_mlx *map)
 		map_mlx_read(map, 1);
 		map_printer(map);
 	}
-	else if (map->map_info[map->py + 1][map->px] == '0'
-		|| map->map_info[map->py + 1][map->px] == 'C'
-		|| map->map_info[map->py + 1][map->px] == 'N')
+	else if (is_somthing(map->map_info[map->py + 1][map->px]) == 1)
 	{
 		if (map->map_info[map->py + 1][map->px] == 'C')
 			map->c--;
@@ -66,10 +62,6 @@ int	key_hook_down(t_map_mlx *map)
 		map_printer(map);
 	}
 	return (0);
-}
-int	is_somthing(char c)
-{
-	return (c == 'C' || c == 'N' || c == '0');
 }
 
 int	key_hook_right(t_map_mlx *map)
@@ -110,9 +102,7 @@ int	key_hook_up(t_map_mlx *map)
 		map_mlx_read(map, 1);
 		map_printer(map);
 	}
-	else if (map->map_info[map->py - 1][map->px] == '0'
-		|| map->map_info[map->py - 1][map->px] == 'C'
-		|| map->map_info[map->py - 1][map->px] == 'N')
+	else if (is_somthing(map->map_info[map->py - 1][map->px]) == 1)
 	{
 		if (map->map_info[map->py - 1][map->px] == 'C')
 			map->c--;
