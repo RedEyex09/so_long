@@ -6,7 +6,7 @@
 /*   By: hel-magh <hel-magh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 17:47:28 by hel-magh          #+#    #+#             */
-/*   Updated: 2024/01/19 21:32:12 by hel-magh         ###   ########.fr       */
+/*   Updated: 2024/01/20 10:52:14 by hel-magh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 int	key_hook_left(t_map_mlx *map)
 {
+	map->ps = 4;
 	if (map->c == 0 && map->map_info[map->py][map->px - 1] != '1')
 	{
 		if (map->map_info[map->py][map->px - 1] == 'E')
@@ -41,6 +42,7 @@ int	key_hook_left(t_map_mlx *map)
 
 int	key_hook_down(t_map_mlx *map)
 {
+	map->ps = 1;
 	if (map->c == 0 && map->map_info[map->py + 1][map->px] != '1')
 	{
 		if (map->map_info[map->py + 1][map->px] == 'E')
@@ -68,6 +70,7 @@ int	key_hook_down(t_map_mlx *map)
 
 int	key_hook_right(t_map_mlx *map)
 {
+	map->ps = 3;
 	if (map->c == 0 && map->map_info[map->py][map->px + 1] != '1')
 	{
 		if (map->map_info[map->py][map->px + 1] == 'E')
@@ -95,6 +98,7 @@ int	key_hook_right(t_map_mlx *map)
 
 int	key_hook_up(t_map_mlx *map)
 {
+	map->ps = 2;
 	if (map->c == 0 && map->map_info[map->py - 1][map->px] != '1')
 	{
 		if (map->map_info[map->py - 1][map->px] == 'E')

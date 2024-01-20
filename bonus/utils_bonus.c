@@ -6,7 +6,7 @@
 /*   By: hel-magh <hel-magh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 20:06:43 by hel-magh          #+#    #+#             */
-/*   Updated: 2024/01/20 09:12:38 by hel-magh         ###   ########.fr       */
+/*   Updated: 2024/01/20 09:32:58 by hel-magh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 void	map_printer(t_map_mlx *map)
 {
 	map->e++;
-	ft_printf("Player Moves -> %d\n", map->e);
 	map->player_move = ft_strjoin("Player movement -> ", ft_itoa(map->e));
 	mlx_string_put(map->mlx, map->win, 0, 0, 0xFFFF, map->player_move);
 	ft_free(map->player_move);
@@ -25,9 +24,8 @@ void	map_init_printer(t_map_mlx *map)
 {
 	if (map->pr == 0)
 	{
-		ft_printf("Player Moves -> %d\n", map->e);
 		map->player_move = "Player movement -> 0";
-		mlx_string_put(map->mlx, map->win, 0, 0, 0xFFFF, map->player_move);
+		mlx_string_put(map->mlx, map->win, 0, 0, 0xFFFFFF, map->player_move);
 	}
 	map->pr = 1;
 }
