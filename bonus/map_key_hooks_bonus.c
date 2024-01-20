@@ -6,7 +6,7 @@
 /*   By: hel-magh <hel-magh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 17:47:28 by hel-magh          #+#    #+#             */
-/*   Updated: 2024/01/20 13:40:02 by hel-magh         ###   ########.fr       */
+/*   Updated: 2024/01/20 16:50:47 by hel-magh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,7 @@ int	key_hook_up(t_map_mlx *map)
 		map_mlx_read(map, 1);
 		map_printer(map);
 	}
-	else if (map->map_info[map->py - 1][map->px] == '0'
+	else if (map->map_info[map->py - 1][map->px] == '0' 
 		|| map->map_info[map->py - 1][map->px] == 'C')
 	{
 		if (map->map_info[map->py - 1][map->px] == 'C')
