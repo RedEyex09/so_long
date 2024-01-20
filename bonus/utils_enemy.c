@@ -6,7 +6,7 @@
 /*   By: hel-magh <hel-magh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 11:36:45 by hel-magh          #+#    #+#             */
-/*   Updated: 2024/01/20 17:50:03 by hel-magh         ###   ########.fr       */
+/*   Updated: 2024/01/20 18:18:27 by hel-magh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,38 +14,28 @@
 
 int	enemy_left(t_map_mlx *map)
 {
-	 if ( map->map_info[map->ny][map->nx - 1] == 'P')
-	{
-		ft_printf("YOU LOSE\n");
-	 	exit(0);
-	}
-		map->map_info[map->ny][map->nx] = '0';
-		map->map_info[map->ny][map->nx - 1] = 'N';
-		map_mlx_read(map, 1);
-		map_init_printer(map);
+	if (map->map_info[map->ny][map->nx - 1] == 'P')
+		win_lose(0);
+	map->map_info[map->ny][map->nx] = '0';
+	map->map_info[map->ny][map->nx - 1] = 'N';
+	map_mlx_read(map, 1);
+	map_init_printer(map);
 	return(1);
 }
 int enemy_down(t_map_mlx *map)
 {
 	if (map->map_info[map->ny + 1][map->nx] == 'P')
-	{
-		ft_printf("YOU LOSE\n");
-	 	exit(0);
-	}
+		win_lose(0);
 		map->map_info[map->ny][map->nx] = '0';
 		map->map_info[map->ny + 1][map->nx] = 'N';
 		map_mlx_read(map, 1);
 		map_init_printer(map);
 		return (1);
-
 }
 int enemy_right(t_map_mlx *map)
 {
 	if (map->map_info[map->ny][map->nx + 1] == 'P')
-	{
-		ft_printf("YOU LOSE\n");
-	 	exit(0);
-	}
+		win_lose(0);
 	map->map_info[map->ny][map->nx] = '0';
 	map->map_info[map->ny][map->nx + 1] = 'N';
 	map_mlx_read(map, 1);
@@ -55,10 +45,7 @@ int enemy_right(t_map_mlx *map)
 int enemy_up(t_map_mlx *map)
 {
 	if (map->map_info[map->ny - 1][map->nx] == 'P')
-	{
-		ft_printf("YOU LOSE\n");
-	 	exit(0);
-	}
+		win_lose(0);
 	map->map_info[map->ny][map->nx] = '0';
 	map->map_info[map->ny - 1][map->nx] = 'N';
 	map_mlx_read(map, 1);
@@ -78,7 +65,7 @@ int	enemy(t_map_mlx *map)
 		enemy_left(map);
 		if (map->map_info[map->ny][map->nx - 1] == '1')
 		{
-			enemy_down(map);
+			enemy_right(map);
 			j = 1;
 		}
 	}
@@ -87,7 +74,7 @@ int	enemy(t_map_mlx *map)
 	{	
 		enemy_up(map);
 		if (map->map_info[map->ny - 1][map->nx] == '1')
-		{  enemy_right(map);
+		{  enemy_down(map);
 			j = 2;
 		}
 	}
@@ -97,7 +84,7 @@ int	enemy(t_map_mlx *map)
 		enemy_right(map);
 		if  (map->map_info[map->ny][map->nx + 1] == '1')
 		{
-			enemy_right(map);
+			enemy_left(map);
 			j = 3;
 		}
 	}
@@ -107,7 +94,7 @@ int	enemy(t_map_mlx *map)
 		enemy_down(map);
 		 if (map->map_info[map->ny + 1][map->nx] == '1')
 		 {
-			enemy_right(map);
+			enemy_up(map);
 			j = 4;
 		 }
 			

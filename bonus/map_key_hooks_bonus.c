@@ -6,7 +6,7 @@
 /*   By: hel-magh <hel-magh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 17:47:28 by hel-magh          #+#    #+#             */
-/*   Updated: 2024/01/20 16:50:47 by hel-magh         ###   ########.fr       */
+/*   Updated: 2024/01/20 18:34:14 by hel-magh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,20 +18,20 @@ int	key_hook_left(t_map_mlx *map)
 	if (map->c == 0 && map->map_info[map->py][map->px - 1] != '1')
 	{
 		if (map->map_info[map->py][map->px - 1] == 'E')
-		{
-			ft_printf("WINNER\n");
-			exit(0);
-		}
+			win_lose(1);
 		map->map_info[map->py][map->px] = '0';
 		map->map_info[map->py][map->px - 1] = 'P';
 		map_mlx_read(map, 1);
 		map_printer(map);
 	}
 	else if (map->map_info[map->py][map->px - 1] == '0'
-		|| map->map_info[map->py][map->px - 1] == 'C')
+		|| map->map_info[map->py][map->px - 1] == 'C'
+		|| map->map_info[map->py][map->px - 1] == 'N')
 	{
 		if (map->map_info[map->py][map->px - 1] == 'C')
 			map->c--;
+		if (map->map_info[map->py][map->px - 1] == 'N')
+			win_lose(0);
 		map->map_info[map->py][map->px] = '0';
 		map->map_info[map->py][map->px - 1] = 'P';
 		map_mlx_read(map, 1);
@@ -46,26 +46,30 @@ int	key_hook_down(t_map_mlx *map)
 	if (map->c == 0 && map->map_info[map->py + 1][map->px] != '1')
 	{
 		if (map->map_info[map->py + 1][map->px] == 'E')
-		{
-			ft_printf("WINNER\n");
-			exit(0);
-		}
+			win_lose(1);
 		map->map_info[map->py][map->px] = '0';
 		map->map_info[map->py + 1][map->px] = 'P';
 		map_mlx_read(map, 1);
-		// map_printer(map);
+		map_printer(map);
 	}
 	else if (map->map_info[map->py + 1][map->px] == '0'
-		|| map->map_info[map->py + 1][map->px] == 'C')
+		|| map->map_info[map->py + 1][map->px] == 'C'
+		|| map->map_info[map->py + 1][map->px] == 'N')
 	{
 		if (map->map_info[map->py + 1][map->px] == 'C')
 			map->c--;
+		if (map->map_info[map->py + 1][map->px] == 'N')
+			win_lose(0);
 		map->map_info[map->py][map->px] = '0';
 		map->map_info[map->py + 1][map->px] = 'P';
 		map_mlx_read(map, 1);
-		 map_printer(map);
+		map_printer(map);
 	}
 	return (0);
+}
+int	is_somthing(char c)
+{
+	return (c == 'C' || c == 'N' || c == '0');
 }
 
 int	key_hook_right(t_map_mlx *map)
@@ -74,20 +78,18 @@ int	key_hook_right(t_map_mlx *map)
 	if (map->c == 0 && map->map_info[map->py][map->px + 1] != '1')
 	{
 		if (map->map_info[map->py][map->px + 1] == 'E')
-		{
-			ft_printf("WINNER\n");
-			exit(0);
-		}
+			win_lose(1);
 		map->map_info[map->py][map->px] = '0';
 		map->map_info[map->py][map->px + 1] = 'P';
 		map_mlx_read(map, 1);
 		map_printer(map);
 	}
-	else if (map->map_info[map->py][map->px + 1] == '0'
-		|| map->map_info[map->py][map->px + 1] == 'C')
+	else if (is_somthing(map->map_info[map->py][map->px + 1]) == 1)
 	{
 		if (map->map_info[map->py][map->px + 1] == 'C')
 			map->c--;
+		if (map->map_info[map->py][map->px + 1] == 'N')
+			win_lose(0);
 		map->map_info[map->py][map->px] = '0';
 		map->map_info[map->py][map->px + 1] = 'P';
 		map_mlx_read(map, 1);
@@ -102,24 +104,24 @@ int	key_hook_up(t_map_mlx *map)
 	if (map->c == 0 && map->map_info[map->py - 1][map->px] != '1')
 	{
 		if (map->map_info[map->py - 1][map->px] == 'E')
-		{
-			ft_printf("WINNER\n");
-			exit(0);
-		}
+			win_lose(1);
 		map->map_info[map->py][map->px] = '0';
 		map->map_info[map->py - 1][map->px] = 'P';
 		map_mlx_read(map, 1);
 		map_printer(map);
 	}
-	else if (map->map_info[map->py - 1][map->px] == '0' 
-		|| map->map_info[map->py - 1][map->px] == 'C')
+	else if (map->map_info[map->py - 1][map->px] == '0'
+		|| map->map_info[map->py - 1][map->px] == 'C'
+		|| map->map_info[map->py - 1][map->px] == 'N')
 	{
 		if (map->map_info[map->py - 1][map->px] == 'C')
 			map->c--;
+		if (map->map_info[map->py - 1][map->px] == 'N')
+			win_lose(0);
 		map->map_info[map->py][map->px] = '0';
 		map->map_info[map->py -1][map->px] = 'P';
 		map_mlx_read(map, 1);
-		 map_printer(map);
+		map_printer(map);
 	}
 	return (0);
 }
@@ -139,6 +141,5 @@ int	key_hook(int key_press, t_map_mlx *map)
 		key_hook_down(map);
 	else if (key_press == 2 || key_press == 124)
 		key_hook_right(map);
-	// map_printer(map);
 	return (0);
 }

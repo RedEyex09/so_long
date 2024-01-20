@@ -6,7 +6,7 @@
 /*   By: hel-magh <hel-magh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 10:32:50 by hel-magh          #+#    #+#             */
-/*   Updated: 2024/01/20 11:03:26 by hel-magh         ###   ########.fr       */
+/*   Updated: 2024/01/20 18:10:55 by hel-magh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,4 +50,17 @@ int	map_mlx_img_set_player(t_map_mlx *map)
 		mlx_put_image_to_window(map->mlx, map->win,
 			map->new_img_player_left, xx, yy);
 	return (0);
+}
+void	win_lose(int c)
+{
+	if (c == 1)
+	{
+		ft_printf("WINNER\n");
+		exit(0);
+	}
+	else
+	{
+		ft_printf("YOU LOST\n");
+		exit(0);
+	}
 }
