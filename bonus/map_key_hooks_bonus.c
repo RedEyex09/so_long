@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_key_hooks.c                                    :+:      :+:    :+:   */
+/*   map_key_hooks_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hel-magh <hel-magh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 17:47:28 by hel-magh          #+#    #+#             */
-/*   Updated: 2024/01/19 21:19:32 by hel-magh         ###   ########.fr       */
+/*   Updated: 2024/01/19 21:32:12 by hel-magh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 int	key_hook_left(t_map_mlx *map)
 {
@@ -24,7 +24,7 @@ int	key_hook_left(t_map_mlx *map)
 		map->map_info[map->py][map->px] = '0';
 		map->map_info[map->py][map->px - 1] = 'P';
 		map_mlx_read(map, 1);
-		map->e++;
+		map_printer(map);
 	}
 	else if (map->map_info[map->py][map->px - 1] == '0'
 		|| map->map_info[map->py][map->px - 1] == 'C')
@@ -34,7 +34,7 @@ int	key_hook_left(t_map_mlx *map)
 		map->map_info[map->py][map->px] = '0';
 		map->map_info[map->py][map->px - 1] = 'P';
 		map_mlx_read(map, 1);
-		map->e++;
+		map_printer(map);
 	}
 	return (0);
 }
@@ -51,7 +51,7 @@ int	key_hook_down(t_map_mlx *map)
 		map->map_info[map->py][map->px] = '0';
 		map->map_info[map->py + 1][map->px] = 'P';
 		map_mlx_read(map, 1);
-		map->e++;
+		map_printer(map);
 	}
 	else if (map->map_info[map->py + 1][map->px] == '0'
 		|| map->map_info[map->py + 1][map->px] == 'C')
@@ -61,7 +61,7 @@ int	key_hook_down(t_map_mlx *map)
 		map->map_info[map->py][map->px] = '0';
 		map->map_info[map->py + 1][map->px] = 'P';
 		map_mlx_read(map, 1);
-		map->e++;
+		map_printer(map);
 	}
 	return (0);
 }
@@ -78,7 +78,7 @@ int	key_hook_right(t_map_mlx *map)
 		map->map_info[map->py][map->px] = '0';
 		map->map_info[map->py][map->px + 1] = 'P';
 		map_mlx_read(map, 1);
-		map->e++;
+		map_printer(map);
 	}
 	else if (map->map_info[map->py][map->px + 1] == '0'
 		|| map->map_info[map->py][map->px + 1] == 'C')
@@ -88,7 +88,7 @@ int	key_hook_right(t_map_mlx *map)
 		map->map_info[map->py][map->px] = '0';
 		map->map_info[map->py][map->px + 1] = 'P';
 		map_mlx_read(map, 1);
-		map->e++;
+		map_printer(map);
 	}
 	return (0);
 }
@@ -105,7 +105,7 @@ int	key_hook_up(t_map_mlx *map)
 		map->map_info[map->py][map->px] = '0';
 		map->map_info[map->py - 1][map->px] = 'P';
 		map_mlx_read(map, 1);
-		map->e++;
+		map_printer(map);
 	}
 	else if (map->map_info[map->py - 1][map->px] == '0'
 		|| map->map_info[map->py - 1][map->px] == 'C')
@@ -115,7 +115,7 @@ int	key_hook_up(t_map_mlx *map)
 		map->map_info[map->py][map->px] = '0';
 		map->map_info[map->py -1][map->px] = 'P';
 		map_mlx_read(map, 1);
-		map->e++;
+		map_printer(map);
 	}
 	return (0);
 }
@@ -135,6 +135,5 @@ int	key_hook(int key_press, t_map_mlx *map)
 		key_hook_down(map);
 	else if (key_press == 2 || key_press == 124)
 		key_hook_right(map);
-	ft_printf("Player Moves -> %d\n", map->e);
 	return (0);
 }

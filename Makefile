@@ -7,9 +7,13 @@ LIBS = ./libs/ft_printf/libftprintf.a ./libs/libft/libft.a \
 
 SRCS = 	main.c map_checker.c map_checker_2.c map_path_checker.c mlx_init_map.c\
 		map_key_hooks.c map_mlx_imgs.c ft_free.c\
-		
-		
+
+SRCS_BONUS = ./bonus/main_bonus.c ./bonus/map_checker_bonus.c ./bonus/map_checker_bonus2.c\
+		./bonus/map_path_checker_bonus.c ./bonus/mlx_init_map_bonus.c ./bonus/map_key_hooks_bonus.c\
+		./bonus/map_mlx_imgs_bonus.c ./bonus/ft_free_bonus.c ./bonus/utils_bonus.c\
+	
 OBJS = ${SRCS:.c=.o}
+OBJS_BONUS = ${SRCS_BONUS:.c=.o}
 LIBC = ar rc
 RM = rm -f
 
@@ -26,16 +30,18 @@ lib_compile:
 ${NAME}: ${OBJS}
 	@echo "Compiling $(NAME)..."
 	@$(CC) $(CFLAGS) $(OBJS) $(LINKS) $(LIBS) -o $(NAME)
-	@echo "<< Compile finished >>"
+	@echo "<< Compile Finished >>"
 
-
-
+bonus :lib_compile ${NAME} ${OBJS_BONUS}
+	@echo "Compiling $(NAME)..."
+	@$(CC) $(CFLAGS) $(OBJS_BONUS) $(LINKS) $(LIBS) -o $(NAME)
+	@echo "<< Compiling Bonus Finished >>"
 
 clean:
 	@echo "Start removing .. "
 	@cd ./libs/libft && make clean
 	@cd ./libs/ft_printf && make clean
-	@rm -rf $(OBJS)
+	@rm -rf $(OBJS) $(OBJS_BONUS)
 	@echo "<< Remove finished >> "
 
 fclean: clean

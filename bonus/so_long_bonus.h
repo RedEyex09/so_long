@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   so_long_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hel-magh <hel-magh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 15:37:53 by hel-magh          #+#    #+#             */
-/*   Updated: 2024/01/18 16:18:07 by hel-magh         ###   ########.fr       */
+/*   Updated: 2024/01/20 09:07:02 by hel-magh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#ifndef SO_LONG_BONUS_H
+# define SO_LONG_BONUS_H
 
-# include "./libs/ft_printf/ft_printf.h"
-# include "./libs/libft/libft.h"
-# include "./libs/get_next_line/get_next_line.h"
+# include "../libs/ft_printf/ft_printf.h"
+# include "../libs/libft/libft.h"
+# include "../libs/get_next_line/get_next_line.h"
 # include <mlx.h>
 # include <libc.h>
 # include <limits.h>
@@ -51,6 +51,7 @@ typedef struct map_mlx
 	char	*buffer;
 	char	*tmp;
 	char	*str_read;
+	char	*player_move;
 	char	character;
 	char	character2;
 	int		counter;
@@ -65,10 +66,12 @@ typedef struct map_mlx
 	int		py;
 	int		e;
 	int		c;
+	int		pr;
 	void	*mlx;
 	void	*win;
 	void	*new_img_wall;
 	void	*new_img_player;
+	void	*new_img_monster;
 	void	*new_img_food;
 	void	*new_img_exit;
 	void	*new_img_exit_open;
@@ -106,5 +109,7 @@ void	*ft_free_double(char **str, size_t count);
 void	ft_close(int fd);
 void	malx_img_init(t_map_mlx *map);
 int		notify(t_map_mlx *map);
+void	map_printer(t_map_mlx *map);
+void	map_init_printer(t_map_mlx *map);
 
 #endif

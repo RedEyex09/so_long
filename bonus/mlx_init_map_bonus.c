@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mlx_init_map.c                                     :+:      :+:    :+:   */
+/*   mlx_init_map_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hel-magh <hel-magh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 13:07:28 by hel-magh          #+#    #+#             */
-/*   Updated: 2024/01/18 16:18:17 by hel-magh         ###   ########.fr       */
+/*   Updated: 2024/01/20 09:11:04 by hel-magh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 int	c_counter(char *str)
 {
@@ -81,11 +81,13 @@ void	malx_img_init(t_map_mlx *map)
 			&map->i, &map->j);
 	map->new_img_wall = mlx_xpm_file_to_image(map->mlx, "src/wall.xpm",
 			&map->i, &map->j);
+	map->new_img_monster = mlx_xpm_file_to_image(map->mlx, "src/monster.xpm",
+			&map->i, &map->j);
 	map->new_img_exit_open = mlx_xpm_file_to_image(map->mlx,
 			"src/exit_open.xpm", &map->i, &map->j);
 	if (!map->new_img_exit || !map->new_img_food
 		|| !map->new_img_player || !map->new_img_wall
-		|| !map->new_img_exit_open)
+		|| !map->new_img_exit_open || !map->new_img_monster)
 	{
 		ft_printf("Error\nPoblem in image instialisation\n");
 		exit(0);
@@ -101,6 +103,7 @@ void	mlx_init_map(char *str)
 	map.mlx = mlx_init();
 	malx_img_init(&map);
 	map_read(map.str_read, &map);
+	map_init_printer(&map);
 	mlx_hook(map.win, 2, 0, key_hook, &map);
 	mlx_hook(map.win, 17, 0, notify, &map);
 	mlx_loop(map.mlx);
