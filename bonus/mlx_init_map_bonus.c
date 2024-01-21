@@ -6,7 +6,7 @@
 /*   By: hel-magh <hel-magh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 13:07:28 by hel-magh          #+#    #+#             */
-/*   Updated: 2024/01/20 13:40:11 by hel-magh         ###   ########.fr       */
+/*   Updated: 2024/01/21 19:50:25 by hel-magh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,14 +79,12 @@ void	malx_img_init(t_map_mlx *map)
 			&map->i, &map->j);
 	map->new_img_wall = mlx_xpm_file_to_image(map->mlx, "src/wall.xpm",
 			&map->i, &map->j);
-	map->new_img_monster = mlx_xpm_file_to_image(map->mlx, "src/monster.xpm",
-			&map->i, &map->j);
 	map->new_img_exit_open = mlx_xpm_file_to_image(map->mlx,
 			"src/exit_open.xpm", &map->i, &map->j);
 	mlx_player_init(map);
+	mlx_enemy_init(map);
 	if (!map->new_img_exit || !map->new_img_food
-		||!map->new_img_wall || !map->new_img_exit_open
-		|| !map->new_img_monster)
+		||!map->new_img_wall || !map->new_img_exit_open)
 	{
 		ft_printf("Error\nPoblem in image instialisation\n");
 		exit(0);

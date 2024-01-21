@@ -6,7 +6,7 @@
 /*   By: hel-magh <hel-magh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 15:37:53 by hel-magh          #+#    #+#             */
-/*   Updated: 2024/01/21 17:39:34 by hel-magh         ###   ########.fr       */
+/*   Updated: 2024/01/21 18:49:24 by hel-magh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ typedef struct map_mlx
 	int		nx;
 	int		ny;
 	int		ps;
+	int		ns;
 	int		e;
 	int		c;
 	int		pr;
@@ -78,6 +79,10 @@ typedef struct map_mlx
 	void	*new_img_player_down;
 	void	*new_img_player_right;
 	void	*new_img_player_left;
+	void	*new_img_monster_up;
+	void	*new_img_monster_down;
+	void	*new_img_monster_right;
+	void	*new_img_monster_left;
 	void	*new_img_monster;
 	void	*new_img_food;
 	void	*new_img_exit;
@@ -129,5 +134,6 @@ void	win_lose(int c);
 int		is_somthing(char c);
 int		is_po(char c);
 int		jj(int c);
-
+void	mlx_enemy_init(t_map_mlx *map);
+int		map_mlx_img_set_enemy(t_map_mlx *map);
 #endif
