@@ -6,7 +6,7 @@
 /*   By: hel-magh <hel-magh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 11:36:45 by hel-magh          #+#    #+#             */
-/*   Updated: 2024/01/21 18:16:20 by hel-magh         ###   ########.fr       */
+/*   Updated: 2024/01/21 20:15:37 by hel-magh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,11 @@ int	enemy_up_1(t_map_mlx *p, int j)
 {
 	enemy_up(p);
 	if (p->map_info[p->ny - 1][p->nx] == '1')
+	{
+		enemy_down(p);
+		j = 2;
+	}
+	if (p->map_info[p->ny - 1][p->nx] == 'P')
 	{
 		enemy_down(p);
 		j = 2;
