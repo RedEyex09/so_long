@@ -6,7 +6,7 @@
 /*   By: hel-magh <hel-magh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 15:37:53 by hel-magh          #+#    #+#             */
-/*   Updated: 2024/01/21 15:40:10 by hel-magh         ###   ########.fr       */
+/*   Updated: 2024/01/21 17:39:34 by hel-magh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ typedef struct map_mlx
 	char	*tmp;
 	char	*str_read;
 	char	*player_move;
-	char	character;
+	char	*character;
 	char	character2;
 	int		counter;
 	size_t	len;
