@@ -6,100 +6,71 @@
 /*   By: hel-magh <hel-magh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 11:36:45 by hel-magh          #+#    #+#             */
-/*   Updated: 2024/01/20 18:18:27 by hel-magh         ###   ########.fr       */
+/*   Updated: 2024/01/21 16:06:14 by hel-magh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long_bonus.h"
 
-int	enemy_left(t_map_mlx *map)
+int	enemy_left_1(t_map_mlx *p, int j)
 {
-	if (map->map_info[map->ny][map->nx - 1] == 'P')
-		win_lose(0);
-	map->map_info[map->ny][map->nx] = '0';
-	map->map_info[map->ny][map->nx - 1] = 'N';
-	map_mlx_read(map, 1);
-	map_init_printer(map);
-	return(1);
-}
-int enemy_down(t_map_mlx *map)
-{
-	if (map->map_info[map->ny + 1][map->nx] == 'P')
-		win_lose(0);
-		map->map_info[map->ny][map->nx] = '0';
-		map->map_info[map->ny + 1][map->nx] = 'N';
-		map_mlx_read(map, 1);
-		map_init_printer(map);
-		return (1);
-}
-int enemy_right(t_map_mlx *map)
-{
-	if (map->map_info[map->ny][map->nx + 1] == 'P')
-		win_lose(0);
-	map->map_info[map->ny][map->nx] = '0';
-	map->map_info[map->ny][map->nx + 1] = 'N';
-	map_mlx_read(map, 1);
-	map_init_printer(map);
-	return(1);
-}
-int enemy_up(t_map_mlx *map)
-{
-	if (map->map_info[map->ny - 1][map->nx] == 'P')
-		win_lose(0);
-	map->map_info[map->ny][map->nx] = '0';
-	map->map_info[map->ny - 1][map->nx] = 'N';
-	map_mlx_read(map, 1);
-	map_init_printer(map);
-	return(1);
+	enemy_left(p);
+	if (p->map_info[p->ny][p->nx - 1] == '1')
+	{
+		enemy_right(p);
+		j = 1;
+	}
+	return (j);
 }
 
-int	enemy(t_map_mlx *map)
+int	enemy_up_1(t_map_mlx *p, int j)
+{
+	enemy_up(p);
+	if (p->map_info[p->ny - 1][p->nx] == '1')
+	{
+		enemy_down(p);
+		j = 2;
+	}
+	return (j);
+}
+
+int	enemy_right_1(t_map_mlx *p, int j)
+{
+	enemy_right(p);
+	if (p->map_info[p->ny][p->nx + 1] == '1')
+	{
+		enemy_left(p);
+		j = 3;
+	}
+	return (j);
+}
+
+int	enemy_down_1(t_map_mlx *p, int j)
+{
+	enemy_down(p);
+	if (p->map_info[p->ny + 1][p->nx] == '1')
+	{
+		enemy_up(p);
+		j = 4;
+	}
+	return (j);
+}
+
+int	enemy(t_map_mlx *p)
 {
 	static int	i;
 	static int	j;
-	
+
 	i++;
-	if ( i == 2000 && (j == 4 || j == 0) && (map->map_info[map->ny][map->nx - 1] == 'P'
-		|| map->map_info[map->ny][map->nx - 1] == '0'))
-	{	
-		enemy_left(map);
-		if (map->map_info[map->ny][map->nx - 1] == '1')
-		{
-			enemy_right(map);
-			j = 1;
-		}
-	}
-	else if ( i == 2400 && j == 1 && (map->map_info[map->ny - 1][map->nx] == '0'
-		|| map->map_info[map->ny - 1][map->nx] == 'P'))
-	{	
-		enemy_up(map);
-		if (map->map_info[map->ny - 1][map->nx] == '1')
-		{  enemy_down(map);
-			j = 2;
-		}
-	}
-	else if (i == 2450 && j == 2 &&  (map->map_info[map->ny][map->nx + 1] == '0'
-		|| map->map_info[map->ny][map->nx + 1] == 'P'))
-	{	
-		enemy_right(map);
-		if  (map->map_info[map->ny][map->nx + 1] == '1')
-		{
-			enemy_left(map);
-			j = 3;
-		}
-	}
-	else if (i == 2509 && j == 3 && (map->map_info[map->ny + 1][map->nx] == '0'
-		|| map->map_info[map->ny + 1][map->nx] == 'P'))
-	{	
-		enemy_down(map);
-		 if (map->map_info[map->ny + 1][map->nx] == '1')
-		 {
-			enemy_up(map);
-			j = 4;
-		 }
-			
-	}
-	if (i == 2509)
-	i = 0;
-		return(1);
+	if (i == 2000 && jj(j) == 1 && is_po(p->map_info[p->ny][p->nx - 1]) == 1)
+		j = enemy_left_1(p, j);
+	else if (i == 1500 && j == 1 && is_po(p->map_info[p->ny - 1][p->nx]) == 1)
+		j = enemy_up_1(p, j);
+	else if (i == 1020 && j == 2 && is_po(p->map_info[p->ny][p->nx + 1]) == 1)
+		j = enemy_right_1(p, j);
+	else if (i == 1700 && j == 3 && is_po(p->map_info[p->ny + 1][p->nx]) == 1)
+		j = enemy_down_1(p, j);
+	if (i == 2000)
+		i = 0;
+	return (1);
 }

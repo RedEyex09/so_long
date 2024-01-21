@@ -6,7 +6,7 @@
 /*   By: hel-magh <hel-magh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 20:06:43 by hel-magh          #+#    #+#             */
-/*   Updated: 2024/01/20 18:37:12 by hel-magh         ###   ########.fr       */
+/*   Updated: 2024/01/21 16:03:01 by hel-magh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,16 +41,12 @@ int	is_somthing(char c)
 	return (c == 'C' || c == 'N' || c == '0');
 }
 
-void	win_lose(int c)
+int	jj(int c)
 {
-	if (c == 1)
-	{
-		ft_printf("WINNER\n");
-		exit(0);
-	}
-	else
-	{
-		ft_printf("YOU LOST\n");
-		exit(0);
-	}
+	return (c == 4 || c == 0);
+}
+
+int	is_po(char c)
+{
+	return (c == 'P' || c == '0');
 }

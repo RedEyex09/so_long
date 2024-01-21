@@ -6,16 +6,21 @@
 /*   By: hel-magh <hel-magh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 14:52:32 by hel-magh          #+#    #+#             */
-/*   Updated: 2024/01/19 18:35:48 by hel-magh         ###   ########.fr       */
+/*   Updated: 2024/01/21 13:33:19 by hel-magh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long_bonus.h"
 
+// void f(void)
+// {
+// 	system("leaks so_long.a");
+// }
+
 int	main(int argc, char **argv)
 {
 	int			result;
-
+	// atexit(f);
 	if (argc == 2)
 	{
 		result = map_checker(argv[1]);
