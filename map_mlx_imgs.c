@@ -6,7 +6,7 @@
 /*   By: hel-magh <hel-magh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 17:43:37 by hel-magh          #+#    #+#             */
-/*   Updated: 2024/01/18 11:28:11 by hel-magh         ###   ########.fr       */
+/*   Updated: 2024/01/22 09:24:23 by hel-magh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,19 @@ int	map_mlx_check_2(char c, t_map_mlx *map)
 	return (0);
 }
 
+int	is_m(char c)
+{
+	return (c == '1' || c == 'P' || c == 'E' || c == 'C');
+}
+
 int	map_mlx_read(t_map_mlx *map, int i)
 {
 	if (i == 0)
+	{
 		map->map_info = ft_split(map->map_line, '\n');
+		if (!map->map_info)
+			return (0);
+	}
 	map->y = 0;
 	mlx_clear_window(map->mlx, map->win);
 	while (map->map_info[map->y])
@@ -61,10 +70,7 @@ int	map_mlx_read(t_map_mlx *map, int i)
 		map->x = 0;
 		while (map->map_info[map->y][map->x])
 		{
-			if (map->map_info[map->y][map->x] == '1'
-				|| map->map_info[map->y][map->x] == 'P'
-				||map->map_info[map->y][map->x] == 'C'
-				|| map->map_info[map->y][map->x] == 'E')
+			if (is_m(map->map_info[map->y][map->x]) == 1)
 			{
 				map_mlx_check_1(map->map_info[map->y][map->x],
 					map, map->x, map->y);

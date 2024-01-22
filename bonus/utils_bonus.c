@@ -6,7 +6,7 @@
 /*   By: hel-magh <hel-magh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 20:06:43 by hel-magh          #+#    #+#             */
-/*   Updated: 2024/01/21 18:08:43 by hel-magh         ###   ########.fr       */
+/*   Updated: 2024/01/22 09:39:39 by hel-magh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,18 @@ void	map_printer(t_map_mlx *map)
 {
 	map->e++;
 	map ->character = ft_itoa(map->e);
-	map->player_move = ft_strjoin("Player movement -> ", map->character);
+	if (!map ->character)
+	{
+		ft_printf("Error\n Counter problem");
+		exit(0);
+	}
+	map->player_move = ft_strjoin("Player movement -> ", map ->character);
+	if (!map ->player_move)
+	{
+		ft_printf("Error\n Counter problem");
+		free(map ->character);
+		exit(0);
+	}
 	mlx_string_put(map->mlx, map->win, 0, 0, 0xFFFF, map->player_move);
 	ft_free(map->player_move);
 	free(map ->character);
@@ -32,7 +43,18 @@ void	map_init_printer(t_map_mlx *map)
 	else
 	{
 		map ->character = ft_itoa(map->e);
+		if (!map ->character)
+		{
+			ft_printf("Error\n Counter problem");
+			exit(0);
+		}
 		map->player_move = ft_strjoin("Player movement -> ", map ->character);
+		if (!map ->player_move)
+		{
+			ft_printf("Error\n Counter problem");
+			free(map ->character);
+			exit(0);
+		}
 		mlx_string_put(map->mlx, map->win, 0, 0, 0xFFFF, map->player_move);
 		ft_free(map->player_move);
 		free(map ->character);

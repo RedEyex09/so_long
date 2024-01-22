@@ -6,7 +6,7 @@
 /*   By: hel-magh <hel-magh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 15:37:58 by hel-magh          #+#    #+#             */
-/*   Updated: 2024/01/18 09:20:54 by hel-magh         ###   ########.fr       */
+/*   Updated: 2024/01/22 09:45:30 by hel-magh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,20 +39,22 @@ int	map_checker_2(char *map_line, size_t map_counter, size_t map_len)
 		&& map_content_checker(map_line))
 	{
 		map.split_line = ft_split(map_line, '\n');
+		if (!map.split_line)
+			return (free(map_line), 0);
 		if (map_position_check(map.split_line, map_counter))
 		{
 			map.trim_line = ft_strtrim(map_line, "\n01EPC");
+			if (!map.split_line)
+				return (free(map_line), \
+				ft_free_double(map.split_line, map_counter), 0);
 			if (map.trim_line[0] == '\0')
 			{
-				ft_free(map_line);
-				ft_free(map.trim_line);
 				ft_free_double(map.split_line, map_counter);
-				return (1);
+				return (ft_free(map_line), ft_free(map.trim_line), 1);
 			}
 		}
 	}
-	ft_free(map_line);
-	return (0);
+	return (ft_free(map_line), 0);
 }
 
 void	ft_close(int fd)
@@ -72,6 +74,8 @@ int	map_checker(char *str)
 	if (map.fd <= 0)
 		ft_close(map.fd);
 	map.map_line = ft_strdup("");
+	if (!map.map_line)
+		return (0);
 	while (1)
 	{
 		map.buffer = get_next_line(map.fd);

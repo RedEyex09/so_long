@@ -6,7 +6,7 @@
 /*   By: hel-magh <hel-magh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 13:07:28 by hel-magh          #+#    #+#             */
-/*   Updated: 2024/01/21 19:50:25 by hel-magh         ###   ########.fr       */
+/*   Updated: 2024/01/22 09:40:03 by hel-magh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ int	c_counter(char *str)
 	int	i;
 	int	c;
 
+	if (!str)
+		return (0);
 	i = 0;
 	c = 0;
 	while (str[i])
@@ -98,6 +100,11 @@ void	mlx_init_map(char *str)
 	ft_memset(&map, 0, sizeof(map));
 	map.str_read = str;
 	map.mlx = mlx_init();
+	if (!map.mlx)
+	{
+		ft_printf("Error\n Problem in mlx_init");
+		exit(0);
+	}
 	malx_img_init(&map);
 	map_read(map.str_read, &map);
 	map_init_printer(&map);
