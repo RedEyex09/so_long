@@ -6,7 +6,7 @@
 /*   By: hel-magh <hel-magh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 17:53:47 by hel-magh          #+#    #+#             */
-/*   Updated: 2024/01/22 18:16:02 by hel-magh         ###   ########.fr       */
+/*   Updated: 2024/01/22 20:05:01 by hel-magh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void	destroy_img(t_map_mlx *map)
 	mlx_destroy_image(map->mlx, map->new_img_exit_open);
 	mlx_destroy_image(map->mlx, map->new_img_wall);
 	mlx_destroy_image(map->mlx, map->new_img_player);
+	mlx_destroy_window(map->mlx, map->win);
 }
 
 void	ft_close_mlx(t_map_mlx *map)

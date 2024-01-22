@@ -6,7 +6,7 @@
 /*   By: hel-magh <hel-magh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 20:06:43 by hel-magh          #+#    #+#             */
-/*   Updated: 2024/01/22 18:56:01 by hel-magh         ###   ########.fr       */
+/*   Updated: 2024/01/22 19:00:02 by hel-magh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ void	map_printer(t_map_mlx *map)
 		ft_printf("Error\n Counter problem");
 		free(map ->character);
 		destroy_img_bonus(map);
-
 	}
 	mlx_string_put(map->mlx, map->win, 0, 0, 0xFFFF, map->player_move);
 	ft_free(map->player_move);
