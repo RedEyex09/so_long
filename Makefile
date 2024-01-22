@@ -6,12 +6,12 @@ LIBS = ./libs/ft_printf/libftprintf.a ./libs/libft/libft.a \
 	   ./libs/get_next_line/get_next_line.c ./libs/get_next_line/get_next_line_utils.c\
 
 SRCS = 	main.c map_checker.c map_checker_2.c map_path_checker.c mlx_init_map.c\
-		map_key_hooks.c map_mlx_imgs.c ft_free.c\
+		map_key_hooks.c map_mlx_imgs.c ft_free.c mlx_omg_destroy.c\
 
 SRCS_BONUS = ./bonus/main_bonus.c ./bonus/map_checker_bonus.c ./bonus/map_checker_bonus2.c\
 		./bonus/map_path_checker_bonus.c ./bonus/mlx_init_map_bonus.c ./bonus/map_key_hooks_bonus.c\
 		./bonus/map_mlx_imgs_bonus.c ./bonus/ft_free_bonus.c ./bonus/utils_bonus.c\
-		./bonus/utils_xpm_bonus.c ./bonus/utils_enemy.c ./bonus/utils_enemy_2.c\
+		./bonus/utils_xpm_bonus.c ./bonus/utils_enemy.c ./bonus/utils_enemy_2.c ./bonus/mlx_omg_destroy_bonus.c\
 	
 OBJS = ${SRCS:.c=.o}
 OBJS_BONUS = ${SRCS_BONUS:.c=.o}

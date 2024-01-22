@@ -6,7 +6,7 @@
 /*   By: hel-magh <hel-magh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 17:47:28 by hel-magh          #+#    #+#             */
-/*   Updated: 2024/01/19 21:19:32 by hel-magh         ###   ########.fr       */
+/*   Updated: 2024/01/22 18:40:13 by hel-magh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int	key_hook_left(t_map_mlx *map)
 		if (map->map_info[map->py][map->px - 1] == 'E')
 		{
 			ft_printf("WINNER\n");
+			destroy_img(map);
 			exit(0);
 		}
 		map->map_info[map->py][map->px] = '0';
@@ -46,6 +47,7 @@ int	key_hook_down(t_map_mlx *map)
 		if (map->map_info[map->py + 1][map->px] == 'E')
 		{
 			ft_printf("WINNER\n");
+			destroy_img(map);
 			exit(0);
 		}
 		map->map_info[map->py][map->px] = '0';
@@ -73,6 +75,7 @@ int	key_hook_right(t_map_mlx *map)
 		if (map->map_info[map->py][map->px + 1] == 'E')
 		{
 			ft_printf("WINNER\n");
+			destroy_img(map);
 			exit(0);
 		}
 		map->map_info[map->py][map->px] = '0';
@@ -100,6 +103,7 @@ int	key_hook_up(t_map_mlx *map)
 		if (map->map_info[map->py - 1][map->px] == 'E')
 		{
 			ft_printf("WINNER\n");
+			destroy_img(map);
 			exit(0);
 		}
 		map->map_info[map->py][map->px] = '0';
@@ -125,6 +129,7 @@ int	key_hook(int key_press, t_map_mlx *map)
 	if (key_press == 53)
 	{
 		ft_printf("Quitting ESC\n");
+		destroy_img(map);
 		exit(0);
 	}
 	else if (key_press == 13 || key_press == 126)

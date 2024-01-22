@@ -6,7 +6,7 @@
 /*   By: hel-magh <hel-magh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 10:32:50 by hel-magh          #+#    #+#             */
-/*   Updated: 2024/01/22 09:28:29 by hel-magh         ###   ########.fr       */
+/*   Updated: 2024/01/22 18:56:14 by hel-magh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	mlx_player_init(t_map_mlx *map)
 		|| !map->new_img_player_right || !map->new_img_player_left)
 	{
 		ft_printf("Error\nPoblem in image instialisation of player\n");
-		exit(0);
+		destroy_img_bonus(map);
 	}
 }
 
@@ -66,7 +66,7 @@ void	mlx_enemy_init(t_map_mlx *map)
 		|| !map->new_img_monster_right || !map->new_img_monster_left)
 	{
 		ft_printf("Error\nPoblem in image instialisation of enemy\n");
-		exit(0);
+		destroy_img_bonus(map);
 	}
 }
 
@@ -92,16 +92,16 @@ int	map_mlx_img_set_enemy(t_map_mlx *map)
 	return (0);
 }
 
-void	win_lose(int c)
+void	win_lose(int c, t_map_mlx *map)
 {
 	if (c == 1)
 	{
 		ft_printf("WINNER\n");
-		exit(0);
+		destroy_img_bonus(map);
 	}
 	else
 	{
 		ft_printf("YOU LOST\n");
-		exit(0);
+		destroy_img_bonus(map);
 	}
 }

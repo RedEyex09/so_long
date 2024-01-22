@@ -6,7 +6,7 @@
 /*   By: hel-magh <hel-magh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 09:15:06 by hel-magh          #+#    #+#             */
-/*   Updated: 2024/01/19 18:36:04 by hel-magh         ###   ########.fr       */
+/*   Updated: 2024/01/22 18:55:10 by hel-magh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@ int	notify(t_map_mlx *map)
 {
 	ft_printf("Exit X\n");
 	mlx_destroy_window(map->mlx, map->win);
-	exit(0);
+	destroy_img_bonus(map);
+	return (0);
 }
 
 int	map_final_check(char **spliteline, size_t map_counter)

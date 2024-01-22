@@ -6,7 +6,7 @@
 /*   By: hel-magh <hel-magh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 09:15:06 by hel-magh          #+#    #+#             */
-/*   Updated: 2024/01/18 16:18:31 by hel-magh         ###   ########.fr       */
+/*   Updated: 2024/01/22 18:45:45 by hel-magh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ int	notify(t_map_mlx *map)
 {
 	ft_printf("Exit X\n");
 	mlx_destroy_window(map->mlx, map->win);
+	destroy_img(map);
 	exit(0);
 }
 

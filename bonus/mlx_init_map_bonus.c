@@ -6,7 +6,7 @@
 /*   By: hel-magh <hel-magh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 13:07:28 by hel-magh          #+#    #+#             */
-/*   Updated: 2024/01/22 09:40:03 by hel-magh         ###   ########.fr       */
+/*   Updated: 2024/01/22 18:55:43 by hel-magh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	map_len_validation(t_map_mlx *map)
 	else
 	{
 		ft_printf("Error\nSize of map is big for screen\n");
-		exit(0);
+		destroy_img_bonus(map);
 	}
 	return (0);
 }
@@ -47,7 +47,7 @@ int	map_read(char *str, t_map_mlx *map)
 {
 	map->fd = open(str, O_RDONLY);
 	if (map->fd <= 0)
-		ft_close(map->fd);
+		ft_close_mlx(map);
 	map->map_line = ft_strdup("");
 	while (1)
 	{
@@ -89,7 +89,7 @@ void	malx_img_init(t_map_mlx *map)
 		||!map->new_img_wall || !map->new_img_exit_open)
 	{
 		ft_printf("Error\nPoblem in image instialisation\n");
-		exit(0);
+		destroy_img_bonus(map);
 	}
 }
 
@@ -103,7 +103,7 @@ void	mlx_init_map(char *str)
 	if (!map.mlx)
 	{
 		ft_printf("Error\n Problem in mlx_init");
-		exit(0);
+		destroy_img_bonus(&map);
 	}
 	malx_img_init(&map);
 	map_read(map.str_read, &map);

@@ -6,7 +6,7 @@
 /*   By: hel-magh <hel-magh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 17:47:28 by hel-magh          #+#    #+#             */
-/*   Updated: 2024/01/21 18:14:33 by hel-magh         ###   ########.fr       */
+/*   Updated: 2024/01/22 18:54:57 by hel-magh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	key_hook_left(t_map_mlx *map)
 	if (map->c == 0 && map->map_info[map->py][map->px - 1] != '1')
 	{
 		if (map->map_info[map->py][map->px - 1] == 'E')
-			win_lose(1);
+			win_lose(1, map);
 		map->map_info[map->py][map->px] = '0';
 		map->map_info[map->py][map->px - 1] = 'P';
 		map_mlx_read(map, 1);
@@ -29,7 +29,7 @@ int	key_hook_left(t_map_mlx *map)
 		if (map->map_info[map->py][map->px - 1] == 'C')
 			map->c--;
 		if (map->map_info[map->py][map->px - 1] == 'N')
-			win_lose(0);
+			win_lose(0, map);
 		map->map_info[map->py][map->px] = '0';
 		map->map_info[map->py][map->px - 1] = 'P';
 		map_mlx_read(map, 1);
@@ -44,9 +44,9 @@ int	key_hook_down(t_map_mlx *map)
 	if (map->c == 0 && map->map_info[map->py + 1][map->px] != '1')
 	{
 		if (map->map_info[map->py + 1][map->px] == 'E')
-			win_lose(1);
+			win_lose(1, map);
 		if (map->map_info[map->py + 1][map->px] == 'N')
-			win_lose(0);
+			win_lose(0, map);
 		map->map_info[map->py][map->px] = '0';
 		map->map_info[map->py + 1][map->px] = 'P';
 		map_mlx_read(map, 1);
@@ -57,7 +57,7 @@ int	key_hook_down(t_map_mlx *map)
 		if (map->map_info[map->py + 1][map->px] == 'C')
 			map->c--;
 		if (map->map_info[map->py + 1][map->px] == 'N')
-			win_lose(0);
+			win_lose(0, map);
 		map->map_info[map->py][map->px] = '0';
 		map->map_info[map->py + 1][map->px] = 'P';
 		map_mlx_read(map, 1);
@@ -72,9 +72,9 @@ int	key_hook_right(t_map_mlx *map)
 	if (map->c == 0 && map->map_info[map->py][map->px + 1] != '1')
 	{
 		if (map->map_info[map->py][map->px + 1] == 'E')
-			win_lose(1);
+			win_lose(1, map);
 		if (map->map_info[map->py][map->px + 1] == 'N')
-			win_lose(0);
+			win_lose(0, map);
 		map->map_info[map->py][map->px] = '0';
 		map->map_info[map->py][map->px + 1] = 'P';
 		map_mlx_read(map, 1);
@@ -85,7 +85,7 @@ int	key_hook_right(t_map_mlx *map)
 		if (map->map_info[map->py][map->px + 1] == 'C')
 			map->c--;
 		if (map->map_info[map->py][map->px + 1] == 'N')
-			win_lose(0);
+			win_lose(0, map);
 		map->map_info[map->py][map->px] = '0';
 		map->map_info[map->py][map->px + 1] = 'P';
 		map_mlx_read(map, 1);
@@ -100,9 +100,9 @@ int	key_hook_up(t_map_mlx *map)
 	if (map->c == 0 && map->map_info[map->py - 1][map->px] != '1')
 	{
 		if (map->map_info[map->py - 1][map->px] == 'E')
-			win_lose(1);
+			win_lose(1, map);
 		if (map->map_info[map->py - 1][map->px] == 'N')
-			win_lose(0);
+			win_lose(0, map);
 		map->map_info[map->py][map->px] = '0';
 		map->map_info[map->py - 1][map->px] = 'P';
 		map_mlx_read(map, 1);
@@ -113,7 +113,7 @@ int	key_hook_up(t_map_mlx *map)
 		if (map->map_info[map->py - 1][map->px] == 'C')
 			map->c--;
 		if (map->map_info[map->py - 1][map->px] == 'N')
-			win_lose(0);
+			win_lose(0, map);
 		map->map_info[map->py][map->px] = '0';
 		map->map_info[map->py -1][map->px] = 'P';
 		map_mlx_read(map, 1);
@@ -127,7 +127,7 @@ int	key_hook(int key_press, t_map_mlx *map)
 	if (key_press == 53)
 	{
 		ft_printf("Quitting ESC\n");
-		exit(0);
+		destroy_img_bonus(map);
 	}
 	else if (key_press == 13 || key_press == 126)
 		key_hook_up(map);

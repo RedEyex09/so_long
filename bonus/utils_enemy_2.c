@@ -6,7 +6,7 @@
 /*   By: hel-magh <hel-magh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 15:37:52 by hel-magh          #+#    #+#             */
-/*   Updated: 2024/01/21 18:48:07 by hel-magh         ###   ########.fr       */
+/*   Updated: 2024/01/22 18:44:49 by hel-magh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	enemy_left(t_map_mlx *map)
 {
 	map->ns = 4;
 	if (map->map_info[map->ny][map->nx - 1] == 'P')
-		win_lose(0);
+		win_lose(0, map);
 	map->map_info[map->ny][map->nx] = '0';
 	map->map_info[map->ny][map->nx - 1] = 'N';
 	map_mlx_read(map, 1);
@@ -27,7 +27,7 @@ void	enemy_down(t_map_mlx *map)
 {
 	map->ns = 1;
 	if (map->map_info[map->ny + 1][map->nx] == 'P')
-		win_lose(0);
+		win_lose(0, map);
 	map->map_info[map->ny][map->nx] = '0';
 	map->map_info[map->ny + 1][map->nx] = 'N';
 	map_mlx_read(map, 1);
@@ -38,7 +38,7 @@ void	enemy_right(t_map_mlx *map)
 {
 	map->ns = 3;
 	if (map->map_info[map->ny][map->nx + 1] == 'P')
-		win_lose(0);
+		win_lose(0, map);
 	map->map_info[map->ny][map->nx] = '0';
 	map->map_info[map->ny][map->nx + 1] = 'N';
 	map_mlx_read(map, 1);
@@ -49,7 +49,7 @@ void	enemy_up(t_map_mlx *map)
 {
 	map->ns = 2;
 	if (map->map_info[map->ny - 1][map->nx] == 'P')
-		win_lose(0);
+		win_lose(0, map);
 	map->map_info[map->ny][map->nx] = '0';
 	map->map_info[map->ny - 1][map->nx] = 'N';
 	map_mlx_read(map, 1);

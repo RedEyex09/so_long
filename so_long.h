@@ -6,7 +6,7 @@
 /*   By: hel-magh <hel-magh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 15:37:53 by hel-magh          #+#    #+#             */
-/*   Updated: 2024/01/22 11:08:38 by hel-magh         ###   ########.fr       */
+/*   Updated: 2024/01/22 18:16:19 by hel-magh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,5 +104,7 @@ void	*ft_free_double(char **str, size_t count);
 void	ft_close(int fd);
 void	malx_img_init(t_map_mlx *map);
 int		notify(t_map_mlx *map);
+void	destroy_img(t_map_mlx *map); // change
+void	ft_close_mlx(t_map_mlx *map); // change
 
 #endif
