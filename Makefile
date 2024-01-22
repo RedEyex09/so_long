@@ -31,27 +31,27 @@ lib_compile:
 ${NAME}: ${OBJS}
 	@echo "Compiling $(NAME)..."
 	@$(CC) $(CFLAGS) $(OBJS) $(LINKS) $(LIBS) -o $(NAME)
-	@echo "<< Compile Finished >>"
+	@echo "<< Compiling $(NAME) is  Finished >>"
 
 bonus :lib_compile ${NAME} ${OBJS_BONUS}
 	@echo "Compiling $(NAME)..."
 	@$(CC) $(CFLAGS) $(OBJS_BONUS) $(LINKS) $(LIBS) -o $(NAME)
-	@echo "<< Compiling Bonus Finished >>"
+	@echo "<< Compiling $(NAME) Bonus Finished >>"
 
 clean:
 	@echo "Start removing .. "
 	@cd ./libs/libft && make clean
 	@cd ./libs/ft_printf && make clean
 	@rm -rf $(OBJS) $(OBJS_BONUS)
-	@echo "<< Remove finished >> "
+	@echo "<< Removing File .o is finished >> "
 
 fclean: clean
 	@echo "Start Removing $(NAME)"
 	@cd ./libs/libft && make fclean
 	@cd ./libs/ft_printf && make fclean
 	@rm -rf $(NAME)
-	@echo "<< Remove finished >> "
+	@echo "<< Remove $(NAME) finished >> "
 
 re: fclean all
 
-.PHONY: all clean fclean re lib_compile
+.PHONY: clean  lib_compile

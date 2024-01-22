@@ -6,7 +6,7 @@
 /*   By: hel-magh <hel-magh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 15:37:53 by hel-magh          #+#    #+#             */
-/*   Updated: 2024/01/18 16:18:07 by hel-magh         ###   ########.fr       */
+/*   Updated: 2024/01/22 11:08:38 by hel-magh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@
 # include "./libs/libft/libft.h"
 # include "./libs/get_next_line/get_next_line.h"
 # include <mlx.h>
-# include <libc.h>
-# include <limits.h>
 # include <fcntl.h>
 
 typedef struct map_check
