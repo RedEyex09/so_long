@@ -6,7 +6,7 @@
 /*   By: hel-magh <hel-magh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 15:37:58 by hel-magh          #+#    #+#             */
-/*   Updated: 2024/01/23 09:59:00 by hel-magh         ###   ########.fr       */
+/*   Updated: 2024/01/23 14:49:04 by hel-magh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int	map_checker_2(char *map_line, size_t map_counter, size_t map_len)
 		if (map_position_check(map.split_line, map_counter))
 		{
 			map.trim_line = ft_strtrim(map_line, "\n01ENPC");
-			if (!map.split_line)
+			if (!map.trim_line)
 				return (free(map_line), \
 				ft_free_double(map.split_line, map_counter), 0);
 			if (map.trim_line[0] == '\0')
