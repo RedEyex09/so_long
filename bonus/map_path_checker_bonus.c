@@ -6,7 +6,7 @@
 /*   By: hel-magh <hel-magh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 09:15:06 by hel-magh          #+#    #+#             */
-/*   Updated: 2024/01/22 20:03:39 by hel-magh         ###   ########.fr       */
+/*   Updated: 2024/01/23 09:25:17 by hel-magh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ int	map_final_check(char **spliteline, size_t map_counter)
 		}
 		fill.i++;
 	}
+	ft_free_double(spliteline, map_counter);
 	return (1);
 }
 
