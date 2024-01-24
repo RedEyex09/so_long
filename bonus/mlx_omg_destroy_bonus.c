@@ -6,7 +6,7 @@
 /*   By: hel-magh <hel-magh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 17:53:47 by hel-magh          #+#    #+#             */
-/*   Updated: 2024/01/23 11:03:45 by hel-magh         ###   ########.fr       */
+/*   Updated: 2024/01/24 13:14:44 by hel-magh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,5 @@ void	ft_close_mlx(t_map_mlx *map)
 {
 	ft_printf("Error\nProblem in file descriptor\n");
 	close (map->fd);
-	destroy_img_bonus(map);
+	exit(0);
 }

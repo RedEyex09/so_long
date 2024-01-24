@@ -6,7 +6,7 @@
 /*   By: hel-magh <hel-magh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 15:37:53 by hel-magh          #+#    #+#             */
-/*   Updated: 2024/01/23 11:38:49 by hel-magh         ###   ########.fr       */
+/*   Updated: 2024/01/24 19:38:47 by hel-magh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,5 +106,6 @@ void	malx_img_init(t_map_mlx *map);
 int		notify(t_map_mlx *map);
 void	destroy_img(t_map_mlx *map);
 void	ft_close_mlx(t_map_mlx *map);
+void	exit_check(char **split_line, size_t map_counter);
 
 #endif

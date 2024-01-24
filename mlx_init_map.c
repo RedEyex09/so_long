@@ -6,7 +6,7 @@
 /*   By: hel-magh <hel-magh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 13:07:28 by hel-magh          #+#    #+#             */
-/*   Updated: 2024/01/22 18:50:04 by hel-magh         ###   ########.fr       */
+/*   Updated: 2024/01/24 13:40:32 by hel-magh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ int	map_len_validation(t_map_mlx *map)
 	else
 	{
 		ft_printf("Error\nSize of map is big for screen\n");
-		destroy_img(map);
 		exit(0);
 	}
 	return (0);
@@ -89,7 +88,6 @@ void	malx_img_init(t_map_mlx *map)
 		|| !map->new_img_exit_open)
 	{
 		ft_printf("Error\nPoblem in image instialisation\n");
-		destroy_img(map);
 		exit(0);
 	}
 }
@@ -104,7 +102,6 @@ void	mlx_init_map(char *str)
 	if (!map.mlx)
 	{
 		ft_printf("Error\n Problem in mlx_init");
-		destroy_img(&map);
 		exit(0);
 	}
 	malx_img_init(&map);

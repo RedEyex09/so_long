@@ -6,7 +6,7 @@
 /*   By: hel-magh <hel-magh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 14:52:32 by hel-magh          #+#    #+#             */
-/*   Updated: 2024/01/23 10:00:14 by hel-magh         ###   ########.fr       */
+/*   Updated: 2024/01/24 13:37:18 by hel-magh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	main(int argc, char **argv)
 		if (result == 1)
 			mlx_init_map(argv[1]);
 		else
-			ft_printf("Not a valid map\n");
+			ft_printf("Error\nNot a valid map\n");
 	}
 	return (0);
 }
