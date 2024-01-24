@@ -6,7 +6,7 @@
 /*   By: hel-magh <hel-magh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 14:54:44 by hel-magh          #+#    #+#             */
-/*   Updated: 2024/01/20 11:27:05 by hel-magh         ###   ########.fr       */
+/*   Updated: 2024/01/24 21:01:50 by hel-magh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ int	map_first(char *str, size_t counter, size_t len)
 	{
 		if (str[wall.counter] != '1')
 		{
-			ft_printf("Error\n The Fist line is invalid\n");
+			ft_printf("Error\nThe Fist line is invalid\n");
 			exit(0);
 		}
 		wall.counter++;

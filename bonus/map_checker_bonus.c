@@ -6,7 +6,7 @@
 /*   By: hel-magh <hel-magh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 15:37:58 by hel-magh          #+#    #+#             */
-/*   Updated: 2024/01/23 14:49:04 by hel-magh         ###   ########.fr       */
+/*   Updated: 2024/01/24 20:54:19 by hel-magh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,4 +88,32 @@ int	map_checker(char *str)
 	}
 	ft_free(map.buffer);
 	return (map_checker_2(map.map_line, map.counter, map.len));
+}
+
+void	exit_check(char **split_line, size_t map_counter)
+{
+	t_map_check	fill;
+
+	ft_memset(&fill, 0, sizeof(fill));
+	while (split_line[fill.i])
+	{
+		fill.j = 0;
+		while (split_line[fill.i][fill.j])
+		{
+			if (split_line[fill.i][fill.j] == 'E')
+			{
+				if (split_line[fill.i + 1][fill.j] == '1'
+				&& split_line[fill.i - 1][fill.j] == '1'
+				&& split_line[fill.i][fill.j + 1] == '1'
+				&& split_line[fill.i][fill.j - 1] == '1')
+				{
+					ft_printf("Error\nThe Path isn't Valid\n");
+					ft_free_double(split_line, map_counter);
+					exit(0);
+				}
+			}
+			fill.j++;
+		}
+		fill.i++;
+	}
 }

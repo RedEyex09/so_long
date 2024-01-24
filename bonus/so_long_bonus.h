@@ -6,7 +6,7 @@
 /*   By: hel-magh <hel-magh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 15:37:53 by hel-magh          #+#    #+#             */
-/*   Updated: 2024/01/22 18:43:43 by hel-magh         ###   ########.fr       */
+/*   Updated: 2024/01/24 20:54:32 by hel-magh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,5 +135,6 @@ void	mlx_enemy_init(t_map_mlx *map);
 int		map_mlx_img_set_enemy(t_map_mlx *map);
 void	destroy_img_bonus(t_map_mlx *map);
 void	ft_close_mlx(t_map_mlx *map);
+void	exit_check(char **split_line, size_t map_counter);
 
 #endif
